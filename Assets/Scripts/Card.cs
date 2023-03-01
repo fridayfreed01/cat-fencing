@@ -7,25 +7,26 @@ public class Card : MonoBehaviour
 	public bool hasBeenPlayed;
 	public int handIndex;
 
-	GameManager gm;
+	//if card is special, it does not advance the turn on play
+	public bool isSpecial;
+	public string cardName;
 
-	public GameObject effect;
-	public GameObject hollowCircle;
+	GameManager gm;
+	BattleSystem battleSystem;
 
 	private void Start()
 	{
 		gm = FindObjectOfType<GameManager>();
+		battleSystem = GetComponent<BattleSystem>();
 	}
 	private void OnMouseDown()
 	{
 		if (!hasBeenPlayed)
 		{
-			//Instantiate(hollowCircle, transform.position, Quaternion.identity);
 			transform.position = gm.playerActiveCard.position;
 			hasBeenPlayed = true;
 			gm.availableCardSlots[handIndex] = true;
-
-			
+			GetChoice();
 		}
 	}
 
@@ -36,6 +37,38 @@ public class Card : MonoBehaviour
 	//	gameObject.SetActive(false);
 	//}
 
+	public void GetChoice()
+	{
+		BasicCardType selectedCard = BasicCardType.NONE;
+		
+		switch (cardName)
+		{
+			case "Lunge":
+				Debug.Log(cardName);
+				selectedCard = BasicCardType.LUNGE;
+				break;
 
+			case "Pounce":
+				Debug.Log(cardName);
+				selectedCard = BasicCardType.POUNCE;
+				break;
+
+			case "Sneak":
+				Debug.Log(cardName);
+				selectedCard = BasicCardType.SNEAK;
+				break;
+
+			case "Parry":
+				Debug.Log(cardName);
+				selectedCard = BasicCardType.PARRY;
+				break;
+
+			case "Feint":
+				Debug.Log(cardName);
+				selectedCard = BasicCardType.FEINT;
+				break;
+		}
+		Debug.Log(selectedCard);
+	}
 
 }
