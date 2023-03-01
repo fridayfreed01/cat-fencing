@@ -18,14 +18,11 @@ public class BattleSystem : MonoBehaviour
     Unit playerUnit;
     Unit enemyUnit;
 
-    public Card playerCard;
-    public Card enemyCard;
-
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
-    private BasicCardType playerChoice = BasicCardType.NONE;
-    private BasicCardType enemyChoice = BasicCardType.NONE;
+    public BasicCardType playerChoice;
+    public BasicCardType enemyChoice;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +73,7 @@ public class BattleSystem : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(CardInteraction(playerCard, enemyCard));
+        //StartCoroutine(CardInteraction(playerCard, enemyCard));
     }
 
     public void SetChoice(BasicCardType choice)

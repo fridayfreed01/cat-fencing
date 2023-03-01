@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
 	private void Start()
 	{
 		gm = FindObjectOfType<GameManager>();
-		battleSystem = GetComponent<BattleSystem>();
+		battleSystem = FindObjectOfType<BattleSystem>();
 	}
 	private void OnMouseDown()
 	{
@@ -46,26 +46,31 @@ public class Card : MonoBehaviour
 			case "Lunge":
 				Debug.Log(cardName);
 				selectedCard = BasicCardType.LUNGE;
+				battleSystem.playerChoice = selectedCard;
 				break;
 
 			case "Pounce":
 				Debug.Log(cardName);
 				selectedCard = BasicCardType.POUNCE;
+				battleSystem.playerChoice = selectedCard;
 				break;
 
 			case "Sneak":
 				Debug.Log(cardName);
 				selectedCard = BasicCardType.SNEAK;
+				battleSystem.playerChoice = selectedCard;
 				break;
 
 			case "Parry":
 				Debug.Log(cardName);
 				selectedCard = BasicCardType.PARRY;
+				battleSystem.playerChoice = selectedCard;
 				break;
 
 			case "Feint":
 				Debug.Log(cardName);
 				selectedCard = BasicCardType.FEINT;
+				battleSystem.playerChoice = selectedCard;
 				break;
 		}
 		Debug.Log(selectedCard);
