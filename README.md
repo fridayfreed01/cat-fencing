@@ -1,7 +1,8 @@
 # cat-fencing
 Game Design 2 project at UW Madison
 
-DevLog
+DevLog - [table6gamedesign.wordpress.com](url)
+
 Week 6 - MVP where is she?
 
 Table 6 has been hard at work! We’re getting our pixels lined up, and our syntax sorted out. What is an MVP you ask? Unfortunately, while our game does involve a sport (Fencing), this is not our Most Valuable Player. An MVP in this context is the Minimal Viable Product. This version is by no means a fully functional game, but it does work and the core concepts are there. 
