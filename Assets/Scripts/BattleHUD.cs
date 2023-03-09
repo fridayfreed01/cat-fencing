@@ -19,4 +19,5 @@ public class BattleHUD : MonoBehaviour
     {
         hp.text = health + "/" + unit.maxHP;
     }
+
 }

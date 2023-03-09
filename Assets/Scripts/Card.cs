@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+	//determines if specific card has been played already
 	public bool hasBeenPlayed;
 	public int handIndex;
 
 	//if card is special, it does not advance the turn on play
 	public bool isSpecial;
 	public string cardName;
+	public int damage;
 
 	GameManager gm;
 	BattleSystem battleSystem;
@@ -22,12 +24,12 @@ public class Card : MonoBehaviour
 	private void OnMouseDown()
 	{
 		if (!hasBeenPlayed)
-		{
-			transform.position = gm.playerActiveCard.position;
-			hasBeenPlayed = true;
-			gm.availableCardSlots[handIndex] = true;
-			GetChoice();
-		}
+        {
+            transform.position = gm.playerActiveCard.position;
+            hasBeenPlayed = true;
+            gm.availableCardSlots[handIndex] = true;
+            GetChoice();
+        }
 	}
 
 	//void MoveToDiscardPile()

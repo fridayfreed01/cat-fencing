@@ -18,6 +18,12 @@ public class BattleSystem : MonoBehaviour
     Unit playerUnit;
     Unit enemyUnit;
 
+    public int lungeDmg = 2;
+    public int pounceDmg = 3;
+    public int sneakDmg = 4;
+    public int parryDmg = 2;
+    public int feintDmg = 3;
+
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
 
@@ -51,29 +57,54 @@ public class BattleSystem : MonoBehaviour
 
     void PlayerTurn()
     {
-        
+        OnCardPlay();
     }
 
-    IEnumerator CardInteraction(Card playerCard, Card enemyCard)
+    IEnumerator CardInteraction(BasicCardType playerCard, BasicCardType enemyCard)
     {
+        Debug.Log("Card interaction starting");
         //Compare the cards
-
+        int damage = 0;
         //Damage calculation
-
+        
+        if(playerCard == BasicCardType.LUNGE)
+        {
+            damage = lungeDmg;
+        } 
+        else if(playerCard == BasicCardType.POUNCE)
+        {
+            damage = pounceDmg;
+        }
+        else if(playerCard == BasicCardType.SNEAK)
+        {
+            damage = sneakDmg;
+        }
+        else if(playerCard == BasicCardType.FEINT)
+        {
+            damage = feintDmg;
+        }
+        else if(playerCard == BasicCardType.PARRY)
+        {
+            damage = feintDmg;
+        }
+        enemyUnit.TakeDamage(damage);
+        enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
         //Check if player or enemy is dead
 
         //Change state
   
+        //change later
         yield return new WaitForSeconds(2f);
     }
 
     public void OnCardPlay()
     {
+        Debug.Log("Card is being played");
         if(state != BattleState.PLAYERTURN)
         {
             return;
         }
-        //StartCoroutine(CardInteraction(playerCard, enemyCard));
+        StartCoroutine(CardInteraction(playerChoice, enemyChoice));
     }
 
     public void SetChoice(BasicCardType choice)
