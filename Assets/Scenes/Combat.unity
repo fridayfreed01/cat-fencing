@@ -2014,6 +2014,8 @@ MonoBehaviour:
   state: 0
   playerPf: {fileID: 3819289887075832850, guid: ba6f4e52a1a096a4b9c80460904795e2, type: 3}
   enemyPf: {fileID: 6213121671850754670, guid: ef827ea2f9a5e534aae03f4668cacfd5, type: 3}
+  playerCard: {fileID: 0}
+  enemyCard: {fileID: 0}
   playerSpawn: {fileID: 1634423839}
   enemySpawn: {fileID: 1977757077}
   playerUnit: {fileID: 0}
