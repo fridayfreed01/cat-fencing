@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-public class BattleHUD : MonoBehaviour
+namespace Assets.Scripts
 {
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI hp;
-
-    public void SetHUD(Unit unit)
+    public class BattleHUD : MonoBehaviour
     {
-        nameText.text = unit.unitName;
-        hp.text = unit.currentHP + "/" + unit.maxHP;
-    }
+        public TextMeshProUGUI nameText;
+        public TextMeshProUGUI hp;
 
-    public void SetHP(int health, Unit unit)
-    {
-        hp.text = health + "/" + unit.maxHP;
-    }
+        public void SetHUD(Unit unit)
+        {
+            nameText.text = unit.unitName;
+            hp.text = unit.currentHP + "/" + unit.maxHP;
+        }
 
+        public void SetHP(int health, Unit unit)
+        {
+            hp.text = health + "/" + unit.maxHP;
+        }
+
+    }
 }

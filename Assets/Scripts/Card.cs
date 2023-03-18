@@ -1,81 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Card : MonoBehaviour
+namespace Assets.Scripts
 {
-	//determines if specific card has been played already
-	public bool hasBeenPlayed;
-	public int handIndex;
-
-	//if card is special, it does not advance the turn on play
-	public bool isSpecial;
-	public string cardName;
-	public int damage;
-
-	GameManager gm;
-	BattleSystem battleSystem;
-
-	private void Start()
+	public class Card : MonoBehaviour
 	{
-		gm = FindObjectOfType<GameManager>();
-		battleSystem = FindObjectOfType<BattleSystem>();
-	}
-	private void OnMouseDown()
-	{
-		if (!hasBeenPlayed)
-        {
-            transform.position = gm.playerActiveCard.position;
-            hasBeenPlayed = true;
-            gm.availableCardSlots[handIndex] = true;
-            GetChoice();
-        }
-	}
+		//determines if specific card has been played already
+		public bool hasBeenPlayed;
+		public int handIndex;
 
-	//void MoveToDiscardPile()
-	//{
-	//	Instantiate(effect, transform.position, Quaternion.identity);
-	//	gm.discardPile.Add(this);
-	//	gameObject.SetActive(false);
-	//}
+		//if card is special, it does not advance the turn on play
+		public bool isSpecial;
+		public string cardName;
+		public int damage;
 
-	public void GetChoice()
-	{
-		BasicCardType selectedCard = BasicCardType.NONE;
-		
-		switch (cardName)
+		GameManager gm;
+		BattleSystem battleSystem;
+
+		private void Start()
 		{
-			case "Lunge":
-				Debug.Log(cardName);
-				selectedCard = BasicCardType.LUNGE;
-				battleSystem.playerChoice = selectedCard;
-				break;
-
-			case "Pounce":
-				Debug.Log(cardName);
-				selectedCard = BasicCardType.POUNCE;
-				battleSystem.playerChoice = selectedCard;
-				break;
-
-			case "Sneak":
-				Debug.Log(cardName);
-				selectedCard = BasicCardType.SNEAK;
-				battleSystem.playerChoice = selectedCard;
-				break;
-
-			case "Parry":
-				Debug.Log(cardName);
-				selectedCard = BasicCardType.PARRY;
-				battleSystem.playerChoice = selectedCard;
-				break;
-
-			case "Feint":
-				Debug.Log(cardName);
-				selectedCard = BasicCardType.FEINT;
-				battleSystem.playerChoice = selectedCard;
-				break;
+			gm = FindObjectOfType<GameManager>();
+			battleSystem = FindObjectOfType<BattleSystem>();
 		}
-		Debug.Log(selectedCard);
-	}
+		private void OnMouseDown()
+		{
+			if(battleSystem.state != BattleState.PLAYERTURN || hasBeenPlayed)
+			{
+				return;
+			}
+			transform.position = gm.playerActiveCard.position;
+			hasBeenPlayed = true;
+			gm.availableCardSlots[handIndex] = true;
+			battleSystem.playerCard = this;
+            GetChoice();
+			//trigger OnPlayCard() which will then change the state to enemyturn
+            battleSystem.OnPlayCard();
+		}
 
+		//void MoveToDiscardPile()
+		//{
+		//	Instantiate(effect, transform.position, Quaternion.identity);
+		//	gm.discardPile.Add(this);
+		//	gameObject.SetActive(false);
+		//}
+
+		public void GetChoice()
+		{
+			BasicCardType selectedCard = BasicCardType.NONE;
+
+			switch (cardName)
+			{
+				case "Lunge":
+					Debug.Log(cardName);
+					selectedCard = BasicCardType.LUNGE;
+					battleSystem.playerChoice = selectedCard;
+					break;
+
+				case "Pounce":
+					Debug.Log(cardName);
+					selectedCard = BasicCardType.POUNCE;
+					battleSystem.playerChoice = selectedCard;
+					break;
+
+				case "Sneak":
+					Debug.Log(cardName);
+					selectedCard = BasicCardType.SNEAK;
+					battleSystem.playerChoice = selectedCard;
+					break;
+
+				case "Parry":
+					Debug.Log(cardName);
+					selectedCard = BasicCardType.PARRY;
+					battleSystem.playerChoice = selectedCard;
+					break;
+
+				case "Feint":
+					Debug.Log(cardName);
+					selectedCard = BasicCardType.FEINT;
+					battleSystem.playerChoice = selectedCard;
+					break;
+			}
+			Debug.Log(selectedCard);
+		}
+
+	}
 }

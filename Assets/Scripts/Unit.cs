@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Unit : MonoBehaviour
+namespace Assets.Scripts
 {
-    public string unitName;
-    public int maxHP;
-    public int currentHP;
-
-    public void TakeDamage(int dmg)
+    public class Unit : MonoBehaviour
     {
-        currentHP = currentHP - dmg;
+        public string unitName;
+        public int maxHP;
+        public int currentHP;
+
+        public void TakeDamage(int dmg)
+        {
+            currentHP = currentHP - dmg;
+        }
     }
 }
