@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.IO;
+
 namespace Assets.Scripts
 {
 	public class GameManager : MonoBehaviour
@@ -21,7 +23,7 @@ namespace Assets.Scripts
 
 		private void Start()
 		{
-			for (int i = 0; i < cardSlots.Length; i++)
+            for (int i = 0; i < cardSlots.Length; i++)
 			{
 				DrawCard();
 			}
@@ -29,24 +31,24 @@ namespace Assets.Scripts
 
 		public void DrawCard()
 		{
-			if (deck.Count >= 1)
-			{
-				Card randomCard = deck[Random.Range(0, deck.Count)];
-				for (int i = 0; i < availableCardSlots.Length; i++)
-				{
-					if (availableCardSlots[i] == true)
-					{
-						randomCard.gameObject.SetActive(true);
-						randomCard.handIndex = i;
-						randomCard.transform.position = cardSlots[i].position;
-						randomCard.hasBeenPlayed = false;
-						deck.Remove(randomCard);
-						availableCardSlots[i] = false;
-						return;
-					}
-				}
-			}
-		}
+            if (deck.Count >= 1)
+            {
+                Card randomCard = deck[Random.Range(0, deck.Count)];
+                for (int j = 0; j < availableCardSlots.Length; j++)
+                {
+                    if (availableCardSlots[j] == true)
+                    {
+                        randomCard.gameObject.SetActive(true);
+                        randomCard.handIndex = j;
+                        randomCard.transform.position = cardSlots[j].position;
+                        randomCard.hasBeenPlayed = false;
+                        deck.Remove(randomCard);
+                        availableCardSlots[j] = false;
+                        return;
+                    }
+                }
+            }
+        }
 
 		public void Shuffle()
 		{
@@ -60,10 +62,6 @@ namespace Assets.Scripts
 			}
 		}
 
-		private void Update()
-		{
-
-		}
 
 	}
 }

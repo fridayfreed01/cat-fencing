@@ -12,6 +12,7 @@ namespace Assets.Scripts
     public class BattleSystem : StateMachine
     {
         public BattleState state;
+        public GameManager gm;
         public GameObject playerPf;
         public GameObject enemyPf;
 
@@ -39,6 +40,7 @@ namespace Assets.Scripts
         // Start is called before the first frame update
         public void Start()
         {
+            gm = GetComponent<GameManager>();
             state = BattleState.START;
             StartCoroutine(SetupBattle());
         }
@@ -72,6 +74,13 @@ namespace Assets.Scripts
         //This function is not IEnumerator so the player can spend time on their turn
         void PlayerTurn()
         {
+            for(int i = 0; i < gm.cardSlots.Length; i++)
+            {
+                if (gm.cardSlots[i] == null)
+                {
+                    gm.DrawCard();
+                }
+            }
             Debug.Log("Player turn starting");
             //make sure that the game state changes when a card is played
             //maybe a script in card?

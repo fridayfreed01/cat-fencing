@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a5c6b17de122a7c47b69449761500103
+guid: 56ce851e4c274034db4d4573ae988c31
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,7 +52,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -69,7 +69,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clover_idle_sprite_sheet_0
+      name: clover_attack_spritesheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 304eca4b37be07140b4cf982a2c6b201
-      internalID: -1124090162
+      spriteID: 1cf003ace2f4e184cadcadc438b9974c
+      internalID: -1520842196
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clover_idle_sprite_sheet_1
+      name: clover_attack_spritesheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -163,41 +163,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14e79002e2ddc144a9e1102fb1ef94d7
-      internalID: -646940062
+      spriteID: eedd71c05adf13a48b6dc43e07834bea
+      internalID: -1564631405
       vertices: []
       indices: 
       edges: []
       weights: []
-    outline:
-    - - {x: 0, y: 32}
-      - {x: -64, y: 32}
-      - {x: -64, y: 16}
-      - {x: -64, y: -11}
-      - {x: -64, y: -11}
-      - {x: -64, y: -32}
-      - {x: -25, y: -32}
-      - {x: -25, y: -32}
-      - {x: 0, y: -32}
-    - - {x: 0, y: 32}
-      - {x: 0, y: 32}
-      - {x: 0, y: -32}
-      - {x: 64, y: -32}
-      - {x: 64, y: 32}
-      - {x: 64, y: 32}
-      - {x: 64, y: 32}
+    - serializedVersion: 2
+      name: clover_attack_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44da1c21855d59e4294c2fda7f6b3f1f
+      internalID: 581057057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clover_attack_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9582d876bca28714a8d402d34dfceb76
+      internalID: -678537448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clover_attack_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e00fdb75c6cf23a49820816de5cb021e
+      internalID: -1685938943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clover_attack_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6556dc85bba3cea4f871431dbf069311
+      internalID: -537172691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      clover_idle_sprite_sheet_1: -646940062
-      clover_idle_sprite_sheet_0: -1124090162
+      clover_attack_spritesheet_2: 581057057
+      clover_attack_spritesheet_0: -1520842196
+      clover_attack_spritesheet_3: -678537448
+      clover_attack_spritesheet_4: -1685938943
+      clover_attack_spritesheet_5: -537172691
+      clover_attack_spritesheet_1: -1564631405
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
