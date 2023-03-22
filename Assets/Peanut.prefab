@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6033135089611010645}
   - component: {fileID: 4006056010012543832}
   - component: {fileID: 5811693480648458230}
+  - component: {fileID: 2005292679217365002}
   m_Layer: 0
   m_Name: Peanut
   m_TagString: Untagged
@@ -100,3 +101,23 @@ MonoBehaviour:
   unitName: Peanut the Thoughtless
   maxHP: 10
   currentHP: 10
+--- !u!95 &2005292679217365002
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6213121671850754670}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: efa7bf795a909a44fb8d59ab6316792d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -12,7 +12,7 @@ namespace Assets.Scripts
     public class BattleSystem : StateMachine
     {
         public BattleState state;
-        public GameManager gm;
+        public GameManager gameManager;
         public GameObject playerPf;
         public GameObject enemyPf;
 
@@ -37,10 +37,13 @@ namespace Assets.Scripts
         public BasicCardType playerChoice;
         public BasicCardType enemyChoice;
 
+        public TextMeshPro text;
+
+
         // Start is called before the first frame update
         public void Start()
         {
-            gm = GetComponent<GameManager>();
+            gameManager = FindObjectOfType<GameManager>();
             state = BattleState.START;
             StartCoroutine(SetupBattle());
         }
@@ -74,13 +77,6 @@ namespace Assets.Scripts
         //This function is not IEnumerator so the player can spend time on their turn
         void PlayerTurn()
         {
-            for(int i = 0; i < gm.cardSlots.Length; i++)
-            {
-                if (gm.cardSlots[i] == null)
-                {
-                    gm.DrawCard();
-                }
-            }
             Debug.Log("Player turn starting");
             //make sure that the game state changes when a card is played
             //maybe a script in card?
@@ -126,18 +122,37 @@ namespace Assets.Scripts
 
         IEnumerator Cleanup()
         {
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(3f);
             Debug.Log("Cleanup");
             playerCard.gameObject.SetActive(false);
-
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-            
+            if (playerUnit.currentHP <= 0)
+            {
+                state = BattleState.LOSE;
+                EndBattle();
+            }
+            else if (enemyUnit.currentHP <= 0)
+            {
+                state = BattleState.WIN;
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.PLAYERTURN;
+                PlayerTurn();
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                if (gameManager.availableCardSlots[i])
+                {
+                    gameManager.DrawCard();
+                }
+            }
         }
         void EndBattle()
         {
             if(state == BattleState.WIN)
             {
+
                 //win the battle, move to next level
             } else if (state == BattleState.LOSE)
             {
@@ -321,17 +336,6 @@ namespace Assets.Scripts
             }
             playerHUD.SetHP(playerUnit.currentHP, playerUnit);
             enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
-            //Check if player or enemy is dead
-            if(playerUnit.currentHP <= 0)
-            {
-                state = BattleState.LOSE;
-                EndBattle();
-            } else if (enemyUnit.currentHP <= 0)
-            {
-                state = BattleState.WIN;
-                EndBattle();
-            }
-
         }
         public void SetChoice(BasicCardType choice)
         {

@@ -34,9 +34,10 @@ namespace Assets.Scripts
             if (deck.Count >= 1)
             {
                 Card randomCard = deck[Random.Range(0, deck.Count)];
+				Debug.Log(randomCard.cardName);
                 for (int j = 0; j < availableCardSlots.Length; j++)
                 {
-                    if (availableCardSlots[j] == true)
+					if (availableCardSlots[j] == true)
                     {
                         randomCard.gameObject.SetActive(true);
                         randomCard.handIndex = j;
