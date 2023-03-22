@@ -9,6 +9,8 @@ namespace Assets.Scripts
 {
     public enum BattleState { START, PLAYERTURN, ENEMYTURN, COMPARE, CLEANUP, WIN, LOSE }
     public enum BasicCardType { NONE, LUNGE, POUNCE, SNEAK, PARRY, FEINT }
+    public enum Enemy { Peanut, Fluffy }
+
     public class BattleSystem : StateMachine
     {
         public BattleState state;
@@ -96,9 +98,7 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(0);
             Debug.Log("Enemy turn starting");
             //this is where enemy AI will be included
-            //for now, enemy will choose lunge
-            enemyChoice = BasicCardType.LUNGE;
-            Debug.Log(enemyChoice);
+            enemyChoice = GetEnemyChoice();
             //move to COMPARE
             state = BattleState.COMPARE;
             StartCoroutine(Compare());
@@ -362,6 +362,34 @@ namespace Assets.Scripts
                     playerChoice = BasicCardType.FEINT;
                     break;
             }
+        }
+
+        int turns = 0;
+        public BasicCardType GetEnemyChoice()
+        {
+            BasicCardType choice = BasicCardType.NONE;
+            switch (enemyUnit.gameObject.name)
+            {
+                case "Peanut(Clone)":
+                    if (turns < 3)
+                    {
+                        choice = BasicCardType.LUNGE;
+                        turns++;
+                    }
+                    else
+                    {
+                        choice = BasicCardType.PARRY;
+                        turns = 0;
+                    }
+                    break;
+                case "Fluffy(Clone)":
+                    choice = BasicCardType.NONE;
+                    break;
+                case null:
+                    choice = BasicCardType.NONE;
+                    break;
+            }
+            return choice;
         }
     }
 }
