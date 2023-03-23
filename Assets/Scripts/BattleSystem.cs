@@ -7,7 +7,7 @@ using JetBrains.Annotations;
 
 namespace Assets.Scripts
 {
-    public enum BattleState { START, PLAYERTURN, ENEMYTURN, COMPARE, CLEANUP, WIN, LOSE }
+    public enum BattleState { START, PLAYER, ENEMY, COMPARE, CLEANUP, WIN, LOSE }
     public enum BasicCardType { NONE, LUNGE, POUNCE, SNEAK, PARRY, FEINT }
     public enum Enemy { Peanut, Fluffy }
 
@@ -39,15 +39,22 @@ namespace Assets.Scripts
         public BasicCardType playerChoice;
         public BasicCardType enemyChoice;
 
-        public TextMeshPro text;
+        public Card[] enemyCards;
+
+        public TextMeshProUGUI text;
 
 
         // Start is called before the first frame update
-        public void Start()
+        private void Start()
         {
             gameManager = FindObjectOfType<GameManager>();
             state = BattleState.START;
             StartCoroutine(SetupBattle());
+        }
+
+        private void Update()
+        {
+            text.text = state.ToString();
         }
         IEnumerator SetupBattle()
         {
@@ -60,8 +67,7 @@ namespace Assets.Scripts
             enemyHUD.SetHUD(enemyUnit);
 
             yield return new WaitForSeconds(2f);
-
-            state = BattleState.PLAYERTURN;
+            state = BattleState.PLAYER;
             PlayerTurn();
         }
 
@@ -72,7 +78,7 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(0);
 
             //change to ENEMYTURN after setting values
-            state = BattleState.ENEMYTURN;
+            state = BattleState.ENEMY;
             StartCoroutine(EnemyTurn());
         }
 
@@ -86,7 +92,7 @@ namespace Assets.Scripts
 
         public void OnPlayCard()
         {
-            if (state != BattleState.PLAYERTURN)
+            if (state != BattleState.PLAYER)
             {
                 return;
             }
@@ -95,10 +101,35 @@ namespace Assets.Scripts
 
         IEnumerator EnemyTurn()
         {
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(3f);
             Debug.Log("Enemy turn starting");
             //this is where enemy AI will be included
             enemyChoice = GetEnemyChoice();
+            switch (enemyChoice)
+            {
+                case (BasicCardType.LUNGE):
+                    enemyCards[0].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[0].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.POUNCE):
+                    enemyCards[1].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[1].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.PARRY):
+                    enemyCards[2].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[2].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.SNEAK):
+                    enemyCards[3].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[3].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.FEINT):
+                    enemyCards[4].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[4].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.NONE):
+                    break;
+            }
             //move to COMPARE
             state = BattleState.COMPARE;
             StartCoroutine(Compare());
@@ -124,6 +155,10 @@ namespace Assets.Scripts
         {
             yield return new WaitForSeconds(3f);
             Debug.Log("Cleanup");
+            for(int i = 0; i < enemyCards.Length; i++)
+            {
+                enemyCards[i].gameObject.SetActive(false);
+            }
             playerCard.gameObject.SetActive(false);
             if (playerUnit.currentHP <= 0)
             {
@@ -137,7 +172,7 @@ namespace Assets.Scripts
             }
             else
             {
-                state = BattleState.PLAYERTURN;
+                state = BattleState.PLAYER;
                 PlayerTurn();
             }
             for (int i = 0; i < 5; i++)
@@ -364,6 +399,7 @@ namespace Assets.Scripts
             }
         }
 
+        //turns keeps count of how many turns have passed to change behavior
         int turns = 0;
         public BasicCardType GetEnemyChoice()
         {
