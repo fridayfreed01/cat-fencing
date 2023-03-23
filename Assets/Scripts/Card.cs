@@ -13,7 +13,7 @@ namespace Assets.Scripts
 		public bool isSpecial;
 		public string cardName;
 		public int damage;
-
+		public bool isEnemyCard;
 		GameManager gm;
 		BattleSystem battleSystem;
 
@@ -24,7 +24,7 @@ namespace Assets.Scripts
 		}
 		private void OnMouseDown()
 		{
-			if(battleSystem.state != BattleState.PLAYERTURN || hasBeenPlayed)
+			if(battleSystem.state != BattleState.PLAYER || hasBeenPlayed)
 			{
 				return;
 			}
@@ -36,7 +36,17 @@ namespace Assets.Scripts
 			//trigger OnPlayCard() which will then change the state to enemyturn
             battleSystem.OnPlayCard();
 		}
+		
+		public void EnemyPlay(BasicCardType card)
+		{
+			if(battleSystem.state != BattleState.ENEMY || !isEnemyCard)
+			{
+				return;
+			}
 
+			transform.position = gm.enemyActiveCard.position;
+			gameObject.SetActive(true);
+		}
 		//void MoveToDiscardPile()
 		//{
 		//	Instantiate(effect, transform.position, Quaternion.identity);

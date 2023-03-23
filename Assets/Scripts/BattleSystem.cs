@@ -7,11 +7,14 @@ using JetBrains.Annotations;
 
 namespace Assets.Scripts
 {
-    public enum BattleState { START, PLAYERTURN, ENEMYTURN, COMPARE, CLEANUP, WIN, LOSE }
+    public enum BattleState { START, PLAYER, ENEMY, COMPARE, CLEANUP, WIN, LOSE }
     public enum BasicCardType { NONE, LUNGE, POUNCE, SNEAK, PARRY, FEINT }
+    public enum Enemy { Peanut, Fluffy }
+
     public class BattleSystem : StateMachine
     {
         public BattleState state;
+        public GameManager gameManager;
         public GameObject playerPf;
         public GameObject enemyPf;
 
@@ -36,11 +39,22 @@ namespace Assets.Scripts
         public BasicCardType playerChoice;
         public BasicCardType enemyChoice;
 
+        public Card[] enemyCards;
+
+        public TextMeshProUGUI text;
+
+
         // Start is called before the first frame update
-        public void Start()
+        private void Start()
         {
+            gameManager = FindObjectOfType<GameManager>();
             state = BattleState.START;
             StartCoroutine(SetupBattle());
+        }
+
+        private void Update()
+        {
+            text.text = state.ToString();
         }
         IEnumerator SetupBattle()
         {
@@ -53,8 +67,7 @@ namespace Assets.Scripts
             enemyHUD.SetHUD(enemyUnit);
 
             yield return new WaitForSeconds(2f);
-
-            state = BattleState.PLAYERTURN;
+            state = BattleState.PLAYER;
             PlayerTurn();
         }
 
@@ -65,7 +78,7 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(0);
 
             //change to ENEMYTURN after setting values
-            state = BattleState.ENEMYTURN;
+            state = BattleState.ENEMY;
             StartCoroutine(EnemyTurn());
         }
 
@@ -79,7 +92,7 @@ namespace Assets.Scripts
 
         public void OnPlayCard()
         {
-            if (state != BattleState.PLAYERTURN)
+            if (state != BattleState.PLAYER)
             {
                 return;
             }
@@ -88,12 +101,35 @@ namespace Assets.Scripts
 
         IEnumerator EnemyTurn()
         {
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(3f);
             Debug.Log("Enemy turn starting");
             //this is where enemy AI will be included
-            //for now, enemy will choose lunge
-            enemyChoice = BasicCardType.LUNGE;
-            Debug.Log(enemyChoice);
+            enemyChoice = GetEnemyChoice();
+            switch (enemyChoice)
+            {
+                case (BasicCardType.LUNGE):
+                    enemyCards[0].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[0].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.POUNCE):
+                    enemyCards[1].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[1].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.PARRY):
+                    enemyCards[2].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[2].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.SNEAK):
+                    enemyCards[3].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[3].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.FEINT):
+                    enemyCards[4].transform.position = gameManager.enemyActiveCard.position;
+                    enemyCards[4].gameObject.SetActive(true);
+                    break;
+                case (BasicCardType.NONE):
+                    break;
+            }
             //move to COMPARE
             state = BattleState.COMPARE;
             StartCoroutine(Compare());
@@ -117,18 +153,41 @@ namespace Assets.Scripts
 
         IEnumerator Cleanup()
         {
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(3f);
             Debug.Log("Cleanup");
+            for(int i = 0; i < enemyCards.Length; i++)
+            {
+                enemyCards[i].gameObject.SetActive(false);
+            }
             playerCard.gameObject.SetActive(false);
-
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-            
+            if (playerUnit.currentHP <= 0)
+            {
+                state = BattleState.LOSE;
+                EndBattle();
+            }
+            else if (enemyUnit.currentHP <= 0)
+            {
+                state = BattleState.WIN;
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.PLAYER;
+                PlayerTurn();
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                if (gameManager.availableCardSlots[i])
+                {
+                    gameManager.DrawCard();
+                }
+            }
         }
         void EndBattle()
         {
             if(state == BattleState.WIN)
             {
+
                 //win the battle, move to next level
             } else if (state == BattleState.LOSE)
             {
@@ -312,17 +371,6 @@ namespace Assets.Scripts
             }
             playerHUD.SetHP(playerUnit.currentHP, playerUnit);
             enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
-            //Check if player or enemy is dead
-            if(playerUnit.currentHP <= 0)
-            {
-                state = BattleState.LOSE;
-                EndBattle();
-            } else if (enemyUnit.currentHP <= 0)
-            {
-                state = BattleState.WIN;
-                EndBattle();
-            }
-
         }
         public void SetChoice(BasicCardType choice)
         {
@@ -349,6 +397,35 @@ namespace Assets.Scripts
                     playerChoice = BasicCardType.FEINT;
                     break;
             }
+        }
+
+        //turns keeps count of how many turns have passed to change behavior
+        int turns = 0;
+        public BasicCardType GetEnemyChoice()
+        {
+            BasicCardType choice = BasicCardType.NONE;
+            switch (enemyUnit.gameObject.name)
+            {
+                case "Peanut(Clone)":
+                    if (turns < 3)
+                    {
+                        choice = BasicCardType.LUNGE;
+                        turns++;
+                    }
+                    else
+                    {
+                        choice = BasicCardType.PARRY;
+                        turns = 0;
+                    }
+                    break;
+                case "Fluffy(Clone)":
+                    choice = BasicCardType.NONE;
+                    break;
+                case null:
+                    choice = BasicCardType.NONE;
+                    break;
+            }
+            return choice;
         }
     }
 }

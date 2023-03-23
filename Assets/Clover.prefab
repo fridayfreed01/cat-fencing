@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3819289887075832852}
   - component: {fileID: 3819289887075832853}
   - component: {fileID: 2646187490807600183}
+  - component: {fileID: 1328560240280658711}
   m_Layer: 0
   m_Name: Clover
   m_TagString: Untagged
@@ -100,3 +101,23 @@ MonoBehaviour:
   unitName: Clover the Courageous
   maxHP: 10
   currentHP: 10
+--- !u!95 &1328560240280658711
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819289887075832850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6efa7a0e6bdb6744fb0dbf3bb6e628e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
