@@ -22,4 +22,6 @@ public class Buttons : MonoBehaviour
       string prevScene = counter.GetComponent<PrevScene>().PreviousScene();
       SceneManager.LoadScene(prevScene);
  }
+    
+    
 }

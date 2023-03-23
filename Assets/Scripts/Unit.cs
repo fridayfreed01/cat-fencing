@@ -11,7 +11,13 @@ namespace Assets.Scripts
 
         public void TakeDamage(int dmg)
         {
-            currentHP = currentHP - dmg;
+            if(currentHP - dmg <= 0)
+            {
+                currentHP = 0;
+            } else
+            {
+                currentHP = currentHP - dmg;
+            }
         }
     }
 }
