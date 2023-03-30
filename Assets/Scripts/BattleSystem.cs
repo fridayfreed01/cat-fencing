@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -187,10 +188,12 @@ namespace Assets.Scripts
         {
             if(state == BattleState.WIN)
             {
-
+                SceneManager.LoadScene("Win");
                 //win the battle, move to next level
-            } else if (state == BattleState.LOSE)
+            }
+            else if (state == BattleState.LOSE)
             {
+                SceneManager.LoadScene("Lose");
                 //lose the battle, move to menu or restart battle?
             }
         }
