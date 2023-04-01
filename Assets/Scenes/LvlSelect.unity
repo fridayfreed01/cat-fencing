@@ -361,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Combat
+  nextScene: vsPeanut
 --- !u!1 &429500436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Combat
+  nextScene: vsPeanut
 --- !u!1 &1951764736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1861,4 +1861,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Combat
+  nextScene: vsPeanut
