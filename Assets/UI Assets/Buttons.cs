@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Buttons : MonoBehaviour
 {
    public string nextScene;
+    CanvasGroup canvasGroup;
+    public GameObject overlay;
 
     public void doExitGame() {
      Application.Quit();
@@ -22,6 +24,20 @@ public class Buttons : MonoBehaviour
       string prevScene = counter.GetComponent<PrevScene>().PreviousScene();
       SceneManager.LoadScene(prevScene);
  }
-    
-    
+
+    public void openOverlay()
+    {
+        canvasGroup = overlay.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 1;
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+    }
+
+    public void closeOverlay()
+    {
+        canvasGroup = overlay.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0;
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+    }
 }
