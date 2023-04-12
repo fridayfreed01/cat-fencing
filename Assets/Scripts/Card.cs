@@ -39,7 +39,7 @@ namespace Assets.Scripts
 		
 		public void EnemyPlay(BasicCardType card)
 		{
-			if(battleSystem.state != BattleState.ENEMY || !isEnemyCard)
+			if(battleSystem.state != BattleState.BATTLE || !isEnemyCard)
 			{
 				return;
 			}
