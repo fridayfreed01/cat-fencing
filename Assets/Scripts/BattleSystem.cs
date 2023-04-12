@@ -55,18 +55,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            if(state == BattleState.START)
-            {
-                text.text = "Start!";
-            }
-            if(state == BattleState.PLAYER)
-            {
-                text.text = "Player Turn";
-            }
-            if(state == BattleState.BATTLE || state == BattleState.CLEANUP)
-            {
-                text.text = "Clash!";
-            }
+            StateText();
         }
         IEnumerator SetupBattle()
         {
@@ -82,7 +71,7 @@ namespace Assets.Scripts
             state = BattleState.PLAYER;
             PlayerTurn();
         }
-
+        
         IEnumerator PlayCard()
         {
             //get values to compare to enemy's card on ENEMYTURN
@@ -430,6 +419,21 @@ namespace Assets.Scripts
                     break;
             }
             return choice;
+        }
+        public void StateText()
+        {
+            if (state == BattleState.START)
+            {
+                text.text = "Start!";
+            }
+            if (state == BattleState.PLAYER)
+            {
+                text.text = "Player Turn";
+            }
+            if (state == BattleState.BATTLE || state == BattleState.CLEANUP)
+            {
+                text.text = "Clash!";
+            }
         }
     }
 }
