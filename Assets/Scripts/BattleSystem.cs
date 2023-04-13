@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
-    public enum BattleState { START, PLAYER, ENEMY, COMPARE, CLEANUP, WIN, LOSE }
+    public enum BattleState { START, PLAYER, BATTLE, CLEANUP, WIN, LOSE }
     public enum BasicCardType { NONE, LUNGE, POUNCE, SNEAK, PARRY, FEINT }
     public enum Enemy { Peanut, Fluffy }
 
@@ -55,7 +55,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            text.text = state.ToString();
+            StateText();
         }
         IEnumerator SetupBattle()
         {
@@ -71,7 +71,7 @@ namespace Assets.Scripts
             state = BattleState.PLAYER;
             PlayerTurn();
         }
-
+        
         IEnumerator PlayCard()
         {
             //get values to compare to enemy's card on ENEMYTURN
@@ -79,8 +79,8 @@ namespace Assets.Scripts
             yield return new WaitForSeconds(0);
 
             //change to ENEMYTURN after setting values
-            state = BattleState.ENEMY;
-            StartCoroutine(EnemyTurn());
+            state = BattleState.BATTLE;
+            StartCoroutine(Compare());
         }
 
         //This function is not IEnumerator so the player can spend time on their turn
@@ -100,11 +100,9 @@ namespace Assets.Scripts
             StartCoroutine(PlayCard());
         }
 
-        IEnumerator EnemyTurn()
+        public void EnemyTurn()
         {
-            yield return new WaitForSeconds(3f);
             Debug.Log("Enemy turn starting");
-            //this is where enemy AI will be included
             enemyChoice = GetEnemyChoice();
             switch (enemyChoice)
             {
@@ -131,23 +129,15 @@ namespace Assets.Scripts
                 case (BasicCardType.NONE):
                     break;
             }
-            //move to COMPARE
-            state = BattleState.COMPARE;
-            StartCoroutine(Compare());
         }
 
         IEnumerator Compare()
         {
-            yield return new WaitForSeconds(4f);
             Debug.Log("Cards are comparing");
-
+            EnemyTurn();
             CardInteraction(playerChoice, enemyChoice);
 
-            //use CardInteraction() to compare the cards and determine an outcome
-            //check if damage dealt kills enemy or player
-            //if yes, call EndBattle() in the resulting branch
-            //reset transforms of cards/move cards to discard 
-            
+            yield return new WaitForSeconds(0);
             state = BattleState.CLEANUP;
             StartCoroutine(Cleanup());
         }
@@ -429,6 +419,21 @@ namespace Assets.Scripts
                     break;
             }
             return choice;
+        }
+        public void StateText()
+        {
+            if (state == BattleState.START)
+            {
+                text.text = "Start!";
+            }
+            if (state == BattleState.PLAYER)
+            {
+                text.text = "Player Turn";
+            }
+            if (state == BattleState.BATTLE || state == BattleState.CLEANUP)
+            {
+                text.text = "Clash!";
+            }
         }
     }
 }
