@@ -362,6 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: vsPeanut
+  overlay: {fileID: 0}
 --- !u!1 &429500436
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,10 +571,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScaleFactor: 1366
+  m_ReferenceResolution: {x: 1366, y: 768}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1499,6 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: vsPeanut
+  overlay: {fileID: 0}
 --- !u!1 &1951764736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: Menu
+  overlay: {fileID: 0}
 --- !u!114 &1951764739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1862,3 +1865,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene: vsPeanut
+  overlay: {fileID: 0}
