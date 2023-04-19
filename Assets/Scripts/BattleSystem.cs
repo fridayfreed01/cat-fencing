@@ -103,6 +103,7 @@ namespace Assets.Scripts
         public void EnemyTurn()
         {
             Debug.Log("Enemy turn starting");
+             
             enemyChoice = GetEnemyChoice();
             switch (enemyChoice)
             {
