@@ -760,7 +760,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!114 &335343192
 MonoBehaviour:
   m_ObjectHideFlags: 0
