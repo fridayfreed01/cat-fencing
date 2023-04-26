@@ -73,6 +73,9 @@ namespace Assets.Scripts
                 case "Peanut(Clone)":
                     enemyUnit.name = "Peanut";
                     break;
+                case "Fluffy(Clone)":
+                    enemyUnit.name = "Fluffy";
+                    break;
             }
         }
 
@@ -208,11 +211,13 @@ namespace Assets.Scripts
             if(state == BattleState.WIN)
             {
                 SceneManager.LoadScene("Win");
+                StopAllCoroutines();
                 //win the battle, move to next level
             }
             else if (state == BattleState.LOSE)
             {
                 SceneManager.LoadScene("Lose");
+                StopAllCoroutines();
                 //lose the battle, move to menu or restart battle?
             }
         }
@@ -440,8 +445,21 @@ namespace Assets.Scripts
                         turns = 0;
                     }
                     break;
-                case "Fluffy(Clone)":
-                    choice = BasicCardType.NONE;
+                case "Fluffy":
+                    if (turns < 2)
+                    {
+                        choice = BasicCardType.POUNCE;
+                        turns++;
+                    }
+                    else
+                    {
+                        choice = BasicCardType.LUNGE;
+                        turns++;
+                        if(turns == 3)
+                        {
+                            turns = 0;
+                        }
+                    }
                     break;
                 case null:
                     choice = BasicCardType.NONE;
@@ -473,19 +491,19 @@ namespace Assets.Scripts
                 switch (enemyChoice)
                 {
                     case BasicCardType.LUNGE:
-                        battleDialogue.text = enemyUnit.name + " attacks with a " + enemyChoice;
+                        battleDialogue.text = enemyUnit.name + " attacks with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.PARRY:
-                        battleDialogue.text = enemyUnit.name + " deflects with a " + enemyChoice;
+                        battleDialogue.text = enemyUnit.name + " deflects with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.POUNCE:
-                        battleDialogue.text = enemyUnit.name + " bounds with a " + enemyChoice;
+                        battleDialogue.text = enemyUnit.name + " bounds with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.SNEAK:
-                        battleDialogue.text = enemyUnit.name + " evades with a " + enemyChoice;
+                        battleDialogue.text = enemyUnit.name + " evades with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.FEINT:
-                        battleDialogue.text = enemyUnit.name + " diverts with a " + enemyChoice;
+                        battleDialogue.text = enemyUnit.name + " diverts with a " + enemyChoice + "!";
                         break;
                 }
             }
@@ -494,19 +512,19 @@ namespace Assets.Scripts
                 switch (playerChoice)
                 {
                     case BasicCardType.LUNGE:
-                        battleDialogue.text = playerUnit.name + " attacks with a " + playerChoice;
+                        battleDialogue.text = playerUnit.name + " attacks with a " + playerChoice + "!";
                         break;
                     case BasicCardType.PARRY:
-                        battleDialogue.text = playerUnit.name + " deflects with a " + playerChoice;
+                        battleDialogue.text = playerUnit.name + " deflects with a " + playerChoice + "!";
                         break;
                     case BasicCardType.POUNCE:
-                        battleDialogue.text = playerUnit.name + " bounds with a " + playerChoice;
+                        battleDialogue.text = playerUnit.name + " bounds with a " + playerChoice + "!";
                         break;
                     case BasicCardType.SNEAK:
-                        battleDialogue.text = playerUnit.name + " evades with a " + playerChoice;
+                        battleDialogue.text = playerUnit.name + " evades with a " + playerChoice + "!";
                         break;
                     case BasicCardType.FEINT:
-                        battleDialogue.text = playerUnit.name + " diverts with a " + playerChoice;
+                        battleDialogue.text = playerUnit.name + " diverts with a " + playerChoice + "!";
                         break;
                 }
             }
