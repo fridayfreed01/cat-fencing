@@ -8,6 +8,9 @@ namespace Assets.Scripts
         public string unitName;
         public int maxHP;
         public int currentHP;
+        public Animation attackAnim;
+        public Animation hurtAnim;
+        public Animation surrenderAnim;
 
         public void TakeDamage(int dmg)
         {

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 using JetBrains.Annotations;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography.X509Certificates;
+using UnityEditor;
 
 namespace Assets.Scripts
 {
@@ -44,6 +46,17 @@ namespace Assets.Scripts
 
         public TextMeshProUGUI text;
 
+        public TextMeshProUGUI battleDialogue;
+        public GameObject dialogueBox;
+
+        public Animation playerAttackAnim;
+        public Animation playerHurtAnim;
+        public Animation playerSurrenderAnim;
+
+        public Animation enemyAttackAnim;
+        public Animation enemyHurtAnim;
+        public Animation enemySurrenderAnim;
+
 
         // Start is called before the first frame update
         private void Start()
@@ -51,6 +64,16 @@ namespace Assets.Scripts
             gameManager = FindObjectOfType<GameManager>();
             state = BattleState.START;
             StartCoroutine(SetupBattle());
+            if (playerUnit.name == "Clover(Clone)")
+            {
+                playerUnit.name = "Clover";
+            }
+            switch (enemyUnit.name)
+            {
+                case "Peanut(Clone)":
+                    enemyUnit.name = "Peanut";
+                    break;
+            }
         }
 
         private void Update()
@@ -76,7 +99,8 @@ namespace Assets.Scripts
         {
             //get values to compare to enemy's card on ENEMYTURN
             //use SetChoice to find out what card player chose on click
-            yield return new WaitForSeconds(0);
+            SetDialogueText();
+            yield return new WaitForSeconds(2f);
 
             //change to ENEMYTURN after setting values
             state = BattleState.BATTLE;
@@ -103,6 +127,7 @@ namespace Assets.Scripts
         public void EnemyTurn()
         {
             Debug.Log("Enemy turn starting");
+             
             enemyChoice = GetEnemyChoice();
             switch (enemyChoice)
             {
@@ -129,21 +154,25 @@ namespace Assets.Scripts
                 case (BasicCardType.NONE):
                     break;
             }
+            SetDialogueText();
         }
 
         IEnumerator Compare()
         {
             Debug.Log("Cards are comparing");
+            dialogueBox.SetActive(false);
             EnemyTurn();
             CardInteraction(playerChoice, enemyChoice);
-
-            yield return new WaitForSeconds(0);
+            
+            yield return new WaitForSeconds(2f);
+            
             state = BattleState.CLEANUP;
             StartCoroutine(Cleanup());
         }
 
         IEnumerator Cleanup()
         {
+            dialogueBox.SetActive(false);
             yield return new WaitForSeconds(3f);
             Debug.Log("Cleanup");
             for(int i = 0; i < enemyCards.Length; i++)
@@ -399,7 +428,7 @@ namespace Assets.Scripts
             BasicCardType choice = BasicCardType.NONE;
             switch (enemyUnit.gameObject.name)
             {
-                case "Peanut(Clone)":
+                case "Peanut":
                     if (turns < 3)
                     {
                         choice = BasicCardType.LUNGE;
@@ -434,6 +463,54 @@ namespace Assets.Scripts
             {
                 text.text = "Clash!";
             }
+        }
+
+        public void SetDialogueText()
+        {
+            dialogueBox.SetActive(true);
+            if (state == BattleState.BATTLE)
+            {
+                switch (enemyChoice)
+                {
+                    case BasicCardType.LUNGE:
+                        battleDialogue.text = enemyUnit.name + " attacks with a " + enemyChoice;
+                        break;
+                    case BasicCardType.PARRY:
+                        battleDialogue.text = enemyUnit.name + " deflects with a " + enemyChoice;
+                        break;
+                    case BasicCardType.POUNCE:
+                        battleDialogue.text = enemyUnit.name + " bounds with a " + enemyChoice;
+                        break;
+                    case BasicCardType.SNEAK:
+                        battleDialogue.text = enemyUnit.name + " evades with a " + enemyChoice;
+                        break;
+                    case BasicCardType.FEINT:
+                        battleDialogue.text = enemyUnit.name + " diverts with a " + enemyChoice;
+                        break;
+                }
+            }
+            else
+            {
+                switch (playerChoice)
+                {
+                    case BasicCardType.LUNGE:
+                        battleDialogue.text = playerUnit.name + " attacks with a " + playerChoice;
+                        break;
+                    case BasicCardType.PARRY:
+                        battleDialogue.text = playerUnit.name + " deflects with a " + playerChoice;
+                        break;
+                    case BasicCardType.POUNCE:
+                        battleDialogue.text = playerUnit.name + " bounds with a " + playerChoice;
+                        break;
+                    case BasicCardType.SNEAK:
+                        battleDialogue.text = playerUnit.name + " evades with a " + playerChoice;
+                        break;
+                    case BasicCardType.FEINT:
+                        battleDialogue.text = playerUnit.name + " diverts with a " + playerChoice;
+                        break;
+                }
+            }
+            
         }
     }
 }
