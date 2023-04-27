@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrackLevels : MonoBehaviour
 {
-    public Button[] Buttons;
+    //public GameObject Button[];
     public int numInitialized = 2;
     private int[] Levels = {0, 0, 0, 0, 0 };
     private Color yellow = new Color( 1f, 1f, 0.7882f, 1f);
@@ -23,12 +23,12 @@ public class TrackLevels : MonoBehaviour
         {
             if (Levels[i] == 0)
             {
-                Buttons[i].color = yellow;
+                //Buttons[i].color = yellow;
             }
 
             else
             {
-                Buttons[i].color = grey;
+                //Buttons[i].color = grey;
             }
         }
     }

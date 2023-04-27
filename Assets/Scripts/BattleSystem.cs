@@ -76,6 +76,15 @@ namespace Assets.Scripts
                 case "Fluffy(Clone)":
                     enemyUnit.name = "Fluffy";
                     break;
+                case "Moses(Clone)":
+                    enemyUnit.name = "Moses";
+                    break;
+                case "Ollie(Clone)":
+                    enemyUnit.name = "Ollie";
+                    break;
+                case "Snowball(Clone":
+                    enemyUnit.name = "Snowball";
+                    break;
             }
         }
 
@@ -165,7 +174,6 @@ namespace Assets.Scripts
             Debug.Log("Cards are comparing");
             dialogueBox.SetActive(false);
             EnemyTurn();
-            CardInteraction(playerChoice, enemyChoice);
             
             yield return new WaitForSeconds(2f);
             
@@ -175,9 +183,11 @@ namespace Assets.Scripts
 
         IEnumerator Cleanup()
         {
-            dialogueBox.SetActive(false);
-            yield return new WaitForSeconds(3f);
+            CardInteraction(playerChoice, enemyChoice);
+            
+            yield return new WaitForSeconds(2f);
             Debug.Log("Cleanup");
+            dialogueBox.SetActive(false);
             for(int i = 0; i < enemyCards.Length; i++)
             {
                 enemyCards[i].gameObject.SetActive(false);
@@ -233,6 +243,8 @@ namespace Assets.Scripts
                 if (enemyCard == BasicCardType.LUNGE)
                 {
                     Debug.Log("The attacks clash!");
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = "The attacks clash!";
                     return;
                 } 
                 //Lunge vs Pounce
@@ -240,24 +252,32 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 } 
                 //Lunge vs Sneak
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 2;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 } 
                 //Lunge vs Feint
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 1;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 } 
                 //Lunge vs Parry
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 2;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
             }
             //Player POUNCE
@@ -268,11 +288,15 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Pounce vs Pounce
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     Debug.Log("The attacks clash!");
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = "The attacks clash!";
                     return;
                 }
                 //Pounce vs Sneak
@@ -280,18 +304,24 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Pounce vs Feint
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 2;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Pounce vs Parry
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 1;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
             }
             //Player SNEAK
@@ -302,17 +332,23 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Sneak vs Pounce
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 1;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Sneak vs Sneak
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     Debug.Log("The attacks clash!");
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = "The attacks clash!";
                     return;
                 }
                 //Sneak vs Feint
@@ -320,12 +356,16 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Sneak vs Parry
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 4;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
             }
             //Player FEINT
@@ -336,23 +376,31 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Feint vs Pounce
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 2;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Feint vs Sneak
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 1;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Feint vs Feint
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     Debug.Log("The attacks clash!");
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = "The attacks clash!";
                     return;
                 }
                 //Feint vs Parry
@@ -360,6 +408,8 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
             }
             //Player PARRY
@@ -370,29 +420,39 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Parry vs Pounce
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 1;
                     enemyUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Parry vs Sneak
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 4;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Parry vs Feint
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 3;
                     playerUnit.TakeDamage(damage);
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
                 //Parry vs Parry
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     Debug.Log("The attacks clash!");
+                    dialogueBox.SetActive(true);
+                    battleDialogue.text = "The attacks clash!";
                     return;
                 }
             }
@@ -461,6 +521,23 @@ namespace Assets.Scripts
                         }
                     }
                     break;
+                case "Moses":
+                    if (turns < 1)
+                    {
+                        choice = BasicCardType.SNEAK;
+                        turns++;
+                    }
+                    else if (turns < 3)
+                    {
+                        choice = BasicCardType.FEINT;
+                        turns++;
+                    }
+                    else if (turns < 5)
+                    {
+                        choice = BasicCardType.PARRY;
+                        turns = 0;
+                    }
+                    break;
                 case null:
                     choice = BasicCardType.NONE;
                     break;
@@ -491,19 +568,19 @@ namespace Assets.Scripts
                 switch (enemyChoice)
                 {
                     case BasicCardType.LUNGE:
-                        battleDialogue.text = enemyUnit.name + " attacks with a " + enemyChoice + "!";
+                        battleDialogue.text = enemyUnit.name + " tries to attack with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.PARRY:
-                        battleDialogue.text = enemyUnit.name + " deflects with a " + enemyChoice + "!";
+                        battleDialogue.text = enemyUnit.name + " provokes an attack with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.POUNCE:
-                        battleDialogue.text = enemyUnit.name + " bounds with a " + enemyChoice + "!";
+                        battleDialogue.text = enemyUnit.name + " attempts to bound with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.SNEAK:
-                        battleDialogue.text = enemyUnit.name + " evades with a " + enemyChoice + "!";
+                        battleDialogue.text = enemyUnit.name + " tries to evade with a " + enemyChoice + "!";
                         break;
                     case BasicCardType.FEINT:
-                        battleDialogue.text = enemyUnit.name + " diverts with a " + enemyChoice + "!";
+                        battleDialogue.text = enemyUnit.name + " attempts to divert an attack with a " + enemyChoice + "!";
                         break;
                 }
             }
@@ -512,22 +589,23 @@ namespace Assets.Scripts
                 switch (playerChoice)
                 {
                     case BasicCardType.LUNGE:
-                        battleDialogue.text = playerUnit.name + " attacks with a " + playerChoice + "!";
+                        battleDialogue.text = playerUnit.name + " tries to attack with a " + playerChoice + "!";
                         break;
                     case BasicCardType.PARRY:
-                        battleDialogue.text = playerUnit.name + " deflects with a " + playerChoice + "!";
+                        battleDialogue.text = playerUnit.name + " provokes an attack with a " + playerChoice + "!";
                         break;
                     case BasicCardType.POUNCE:
-                        battleDialogue.text = playerUnit.name + " bounds with a " + playerChoice + "!";
+                        battleDialogue.text = playerUnit.name + " attempts to bound with a " + playerChoice + "!";
                         break;
                     case BasicCardType.SNEAK:
-                        battleDialogue.text = playerUnit.name + " evades with a " + playerChoice + "!";
+                        battleDialogue.text = playerUnit.name + " tries to evade with a " + playerChoice + "!";
                         break;
                     case BasicCardType.FEINT:
-                        battleDialogue.text = playerUnit.name + " diverts with a " + playerChoice + "!";
+                        battleDialogue.text = playerUnit.name + " attempts to divert an attack with a " + playerChoice + "!";
                         break;
                 }
             }
+            
             
         }
     }
