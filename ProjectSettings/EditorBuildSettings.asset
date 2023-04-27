@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: ec7448fc9cd3f884d95da771eddea9b0
+  - enabled: 1
     path: Assets/Scenes/GameStart.unity
     guid: d78a02e300bda0c4fa77a6741acbb5bd
   - enabled: 1
@@ -44,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/vsPeanut.unity
     guid: efa78708b2559f74e94ff9c0eb6001c8
+  - enabled: 1
+    path: Assets/Scenes/vsFluffy.unity
+    guid: 500073d7aa492e54ea79fa4a745ec700
   m_configObjects: {}
