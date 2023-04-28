@@ -1,10 +1,10 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TrackLevels : MonoBehaviour
 {
-    //public GameObject Button[];
+    public GameObject[] Buttons;
     public int numInitialized = 2;
     private int[] Levels = {0, 0, 0, 0, 0 };
     private Color yellow = new Color( 1f, 1f, 0.7882f, 1f);
@@ -31,5 +31,5 @@ public class TrackLevels : MonoBehaviour
                 //Buttons[i].color = grey;
             }
         }
-    }
-}
+   }
+}*/
