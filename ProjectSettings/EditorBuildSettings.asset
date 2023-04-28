@@ -48,6 +48,15 @@ EditorBuildSettings:
     path: Assets/Scenes/vsPeanut.unity
     guid: efa78708b2559f74e94ff9c0eb6001c8
   - enabled: 1
+    path: Assets/Scenes/vsOllie.unity
+    guid: 44fd41bc253b9ec47bf45be511d36179
+  - enabled: 1
+    path: Assets/Scenes/vsMoses.unity
+    guid: d71e1ddab1ef8794388107c676003baa
+  - enabled: 1
+    path: Assets/Scenes/vsSnowball.unity
+    guid: eb6ed62f3cafce24abd7c25a945aa1ca
+  - enabled: 1
     path: Assets/Scenes/vsFluffy.unity
     guid: 500073d7aa492e54ea79fa4a745ec700
   m_configObjects: {}

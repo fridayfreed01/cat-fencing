@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6213121671850754670
+--- !u!1 &3253939477692866015
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6033135089611010645}
-  - component: {fileID: 4006056010012543832}
-  - component: {fileID: 5811693480648458230}
-  - component: {fileID: 2005292679217365002}
+  - component: {fileID: 8200992429771490036}
+  - component: {fileID: 7633820641230619049}
+  - component: {fileID: 6945093680849413693}
+  - component: {fileID: 2157959407014298491}
   m_Layer: 0
-  m_Name: Peanut
+  m_Name: Ollie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6033135089611010645
+--- !u!4 &8200992429771490036
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213121671850754670}
+  m_GameObject: {fileID: 3253939477692866015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4006056010012543832
+--- !u!212 &7633820641230619049
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213121671850754670}
+  m_GameObject: {fileID: 3253939477692866015}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1862458556, guid: f66d555061edb7e41aceef1cb1c56ca6, type: 3}
+  m_Sprite: {fileID: -2110340607, guid: 99fff4ef76910b348af30795443b45c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -86,35 +86,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5811693480648458230
+--- !u!114 &6945093680849413693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213121671850754670}
+  m_GameObject: {fileID: 3253939477692866015}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7a0c8e63dfc8814fa0909014fc62942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Peanut the Thoughtless
-  maxHP: 8
-  currentHP: 8
+  unitName: Ollie the Rambunctious
+  maxHP: 10
+  currentHP: 10
   attackAnim: {fileID: 0}
   hurtAnim: {fileID: 0}
   surrenderAnim: {fileID: 0}
---- !u!95 &2005292679217365002
+--- !u!95 &2157959407014298491
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6213121671850754670}
+  m_GameObject: {fileID: 3253939477692866015}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: efa7bf795a909a44fb8d59ab6316792d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 42e9cd0ba7c476c4780b10684c6f2299, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
