@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 350940735}
   - component: {fileID: 350940734}
   m_Layer: 5
-  m_Name: Level (3)
+  m_Name: Snowball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: vsPeanut
+  nextScene: vsSnowball
   overlay: {fileID: 0}
 --- !u!114 &350940735
 MonoBehaviour:
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 379924834}
   - component: {fileID: 379924837}
   m_Layer: 5
-  m_Name: Level (1)
+  m_Name: Ollie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: vsFluffy
+  nextScene: vsOllie
   overlay: {fileID: 0}
 --- !u!1 &429500436
 GameObject:
@@ -730,7 +730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
   m_sharedMaterial: {fileID: 1164255778471611890, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
@@ -1379,7 +1379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '3
+  m_text: '5
 
 '
   m_isRightToLeft: 0
@@ -1652,7 +1652,7 @@ GameObject:
   - component: {fileID: 1287756462}
   - component: {fileID: 1287756461}
   m_Layer: 5
-  m_Name: Level (2)
+  m_Name: Moses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1691,7 +1691,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: vsPeanut
+  nextScene: vsMoses
   overlay: {fileID: 0}
 --- !u!114 &1287756462
 MonoBehaviour:
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
   m_sharedMaterial: {fileID: 1164255778471611890, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
@@ -2434,5 +2434,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: vsPeanut
+  nextScene: vsFluffy
   overlay: {fileID: 0}
