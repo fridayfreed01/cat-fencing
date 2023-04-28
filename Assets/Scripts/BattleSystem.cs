@@ -57,6 +57,7 @@ namespace Assets.Scripts
         public Animation enemyHurtAnim;
         public Animation enemySurrenderAnim;
 
+        BasicCardType[] randomCards = new BasicCardType[5];
 
         // Start is called before the first frame update
         private void Start()
@@ -82,10 +83,15 @@ namespace Assets.Scripts
                 case "Ollie(Clone)":
                     enemyUnit.name = "Ollie";
                     break;
-                case "Snowball(Clone":
+                case "Snowball(Clone)":
                     enemyUnit.name = "Snowball";
                     break;
             }
+            randomCards[0] = BasicCardType.LUNGE;
+            randomCards[1] = BasicCardType.POUNCE;
+            randomCards[2] = BasicCardType.SNEAK;
+            randomCards[3] = BasicCardType.PARRY;
+            randomCards[4] = BasicCardType.FEINT;
         }
 
         private void Update()
@@ -123,8 +129,6 @@ namespace Assets.Scripts
         void PlayerTurn()
         {
             Debug.Log("Player turn starting");
-            //make sure that the game state changes when a card is played
-            //maybe a script in card?
         }
 
         public void OnPlayCard()
@@ -488,8 +492,10 @@ namespace Assets.Scripts
 
         //turns keeps count of how many turns have passed to change behavior
         int turns = 0;
+        int randomNum = Random.Range(0, 4);
         public BasicCardType GetEnemyChoice()
         {
+            
             BasicCardType choice = BasicCardType.NONE;
             switch (enemyUnit.gameObject.name)
             {
@@ -538,10 +544,33 @@ namespace Assets.Scripts
                         turns = 0;
                     }
                     break;
+                case "Snowball":
+                    if (turns % 2 == 0)
+                    {
+                        choice = BasicCardType.FEINT;
+                        turns++;
+                    }
+                    else if (turns == 1)
+                    {
+                        choice = randomCards[randomNum];
+                        turns++;
+                    }
+                    else if (turns == 3)
+                    {
+                        choice = BasicCardType.LUNGE;
+                        turns++;
+                    }
+                    if(turns == 5)
+                    {
+                        choice = BasicCardType.LUNGE;
+                        turns = 0;
+                    }
+                    break;
                 case null:
                     choice = BasicCardType.NONE;
                     break;
             }
+            
             return choice;
         }
         public void StateText()
