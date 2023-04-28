@@ -37,8 +37,11 @@ public class musicControl : MonoBehaviour
             // Plays different music in different scenes
             switch (scene.name)
             {
-                case "vsPeanut":
-                case "vsFluffy":
+            case "vsPeanut":
+            case "vsFluffy":
+            case "vsOllie":
+            case "vsSnowball":
+            case "vsMoses":
                 if (Audio.clip != MusicClips[1])
                 {
                     Audio.enabled = false;
