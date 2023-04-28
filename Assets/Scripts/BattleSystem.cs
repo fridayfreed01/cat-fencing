@@ -224,14 +224,16 @@ namespace Assets.Scripts
         {
             if(state == BattleState.WIN)
             {
-                SceneManager.LoadScene("Win");
                 StopAllCoroutines();
+                turns = 0;
+                SceneManager.LoadScene("Win");  
                 //win the battle, move to next level
             }
             else if (state == BattleState.LOSE)
             {
-                SceneManager.LoadScene("Lose");
                 StopAllCoroutines();
+                turns = 0;
+                SceneManager.LoadScene("Lose");
                 //lose the battle, move to menu or restart battle?
             }
         }
@@ -493,6 +495,7 @@ namespace Assets.Scripts
         //turns keeps count of how many turns have passed to change behavior
         int turns = 0;
         int randomNum = Random.Range(0, 4);
+        int randomNum2 = Random.Range(0, 1);
         public BasicCardType GetEnemyChoice()
         {
             
@@ -500,6 +503,7 @@ namespace Assets.Scripts
             switch (enemyUnit.gameObject.name)
             {
                 case "Peanut":
+                    // Lunge, Lunge, Lunge, Parry...
                     if (turns < 3)
                     {
                         choice = BasicCardType.LUNGE;
@@ -512,22 +516,30 @@ namespace Assets.Scripts
                     }
                     break;
                 case "Fluffy":
-                    if (turns < 2)
+                    // Random (Lunge or Pounce), Feint, Random (L or Po), Sneak, Random (L or Po), Sneak...
+                    if (turns == 1)
                     {
-                        choice = BasicCardType.POUNCE;
+                        choice = BasicCardType.FEINT;
                         turns++;
                     }
-                    else
+                    else if (turns % 2 == 0)
                     {
-                        choice = BasicCardType.LUNGE;
+                        choice = randomCards[randomNum2];
                         turns++;
-                        if(turns == 3)
-                        {
-                            turns = 0;
-                        }
+                    }
+                    else if (turns == 3)
+                    {
+                        choice = BasicCardType.SNEAK;
+                        turns++;
+                    }
+                    else if (turns == 5)
+                    {
+                        choice = BasicCardType.SNEAK;
+                        turns = 0;
                     }
                     break;
                 case "Moses":
+                    // Sneak, Feint, Feint, Pounce, Pounce, Pounce...
                     if (turns < 1)
                     {
                         choice = BasicCardType.SNEAK;
@@ -540,11 +552,17 @@ namespace Assets.Scripts
                     }
                     else if (turns < 5)
                     {
-                        choice = BasicCardType.PARRY;
+                        choice = BasicCardType.POUNCE;
+                        turns++;
+                    }
+                    if (turns == 6)
+                    {
+                        choice = BasicCardType.POUNCE;
                         turns = 0;
                     }
                     break;
                 case "Snowball":
+                    // Feint, Random, Feint, Lunge, Feint, Lunge...
                     if (turns % 2 == 0)
                     {
                         choice = BasicCardType.FEINT;
@@ -564,6 +582,19 @@ namespace Assets.Scripts
                     {
                         choice = BasicCardType.LUNGE;
                         turns = 0;
+                    }
+                    break;
+                case "Ollie":
+                    // Lunge, Pounce, Lunge, Pounce...
+                    if (turns % 2 == 1)
+                    {
+                        choice = BasicCardType.POUNCE;
+                        turns++;
+                    }
+                    else if (turns % 2 == 0)
+                    {
+                        choice = BasicCardType.LUNGE;
+                        turns++;
                     }
                     break;
                 case null:
