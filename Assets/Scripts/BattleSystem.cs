@@ -57,6 +57,9 @@ namespace Assets.Scripts
         public Animation enemyHurtAnim;
         public Animation enemySurrenderAnim;
 
+        int randomNum;
+        int randomNum2;
+
         BasicCardType[] randomCards = new BasicCardType[5];
 
         // Start is called before the first frame update
@@ -92,6 +95,9 @@ namespace Assets.Scripts
             randomCards[2] = BasicCardType.SNEAK;
             randomCards[3] = BasicCardType.PARRY;
             randomCards[4] = BasicCardType.FEINT;
+
+            randomNum = Random.Range(0, 4);
+            randomNum2 = Random.Range(0, 1);
         }
 
         private void Update()
@@ -494,8 +500,7 @@ namespace Assets.Scripts
 
         //turns keeps count of how many turns have passed to change behavior
         int turns = 0;
-        int randomNum = Random.Range(0, 4);
-        int randomNum2 = Random.Range(0, 1);
+        
         public BasicCardType GetEnemyChoice()
         {
             
