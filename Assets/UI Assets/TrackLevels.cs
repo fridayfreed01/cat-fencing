@@ -8,7 +8,7 @@ public class TrackLevels : MonoBehaviour
 {
     public GameObject[] Buttons;
     public int numInitialized = 5;
-    public GameObject tracker;
+    private GameObject tracker;
     private int[] Levels = { 0, 0, 0, 0, 0 };
     private Color yellow = new Color(1f, 1f, 0.7882f, 1f);
     private Color grey = new Color(1f, 1f, 0.7882f, 1f);
@@ -21,10 +21,12 @@ public class TrackLevels : MonoBehaviour
             Buttons[i].GetComponent<Image>().color = grey;
             Buttons[i].GetComponent<Button>().interactable = false;
         }
+        Debug.Log(tracker);
     }
 
     void Update()
     {
+        tracker = GameObject.FindWithTag("Progress");
         for (int i = 0; i < numInitialized; i++)
         {
             Levels[i] = tracker.GetComponent<Progress>().values[i];

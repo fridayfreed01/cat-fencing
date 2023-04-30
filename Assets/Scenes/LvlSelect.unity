@@ -269,6 +269,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: vsSnowball
   overlay: {fileID: 0}
+  MeowClips: []
+  Audio: {fileID: 0}
+  soundClip: 0
 --- !u!114 &350940735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,6 +515,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: vsOllie
   overlay: {fileID: 0}
+  MeowClips: []
+  Audio: {fileID: 0}
+  soundClip: 0
 --- !u!1 &429500436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1699,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: vsMoses
   overlay: {fileID: 0}
+  MeowClips: []
+  Audio: {fileID: 0}
+  soundClip: 0
 --- !u!114 &1287756462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,51 +1796,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1287756459}
   m_CullTransparentMesh: 1
---- !u!1 &1340896137
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1340896139}
-  - component: {fileID: 1340896138}
-  m_Layer: 0
-  m_Name: progress
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1340896138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340896137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fdf5667782264948a557f90db483292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  values: 0000000000000000000000000000000000000000
---- !u!4 &1340896139
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340896137}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 833.3121, y: 393.89545, z: -11.713083}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1614763482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,6 +1945,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: vsPeanut
   overlay: {fileID: 0}
+  MeowClips: []
+  Audio: {fileID: 0}
+  soundClip: 0
 --- !u!1 &1680141876
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,7 +2119,7 @@ MonoBehaviour:
   - {fileID: 350940732}
   - {fileID: 2046171538}
   numInitialized: 5
-  tracker: {fileID: 1340896137}
+  tracker: {fileID: 0}
 --- !u!4 &1704255928
 Transform:
   m_ObjectHideFlags: 0
@@ -2223,6 +2190,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: Menu
   overlay: {fileID: 0}
+  MeowClips: []
+  Audio: {fileID: 0}
+  soundClip: 0
 --- !u!114 &1951764739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,3 +2503,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextScene: vsFluffy
   overlay: {fileID: 0}
+  MeowClips: []
+  Audio: {fileID: 0}
+  soundClip: 0

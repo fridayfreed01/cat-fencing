@@ -9,6 +9,7 @@ public class Progress : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         values[0] = 1;
     }
 }

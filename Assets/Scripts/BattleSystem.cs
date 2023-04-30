@@ -232,6 +232,28 @@ namespace Assets.Scripts
             {
                 StopAllCoroutines();
                 turns = 0;
+                //the following code used for level select, added by Sage
+                int indexToActivate = 0;
+                switch (enemyUnit.gameObject.name)
+                {
+                    case "Peanut":
+                        indexToActivate = 1;
+                        break;
+                    case "Ollie":
+                        indexToActivate = 2;
+                        break;
+                    case "Moses":
+                        indexToActivate = 3;
+                        break;
+                    case "Snowball":
+                        indexToActivate = 4;
+                        break;
+                    case "Fluffy":
+                        //call end of game scene here once implemented
+                        break;
+                }
+                GameObject.FindWithTag("Progress").GetComponent<Progress>().values[indexToActivate] = 1;
+                //end code done by Sage
                 SceneManager.LoadScene("Win");  
                 //win the battle, move to next level
             }
