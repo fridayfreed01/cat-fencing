@@ -9,52 +9,61 @@ using UnityEngine.SceneManagement;
 
 public class musicControl : MonoBehaviour
 {
-        static musicControl instance;
+    static musicControl instance;
 
-        // Drag in the .mp3 files here, in the editor
-        public AudioClip[] MusicClips;
+    // Drag in the .mp3 files here, in the editor
+    public AudioClip[] MusicClips;
 
-        public AudioSource Audio;
-    
+    public AudioSource Audio;
 
-        // Singelton to keep instance alive through all scenes
-        void Awake()
-        {
-            if (instance == null) { instance = this; }
-            else { Destroy(gameObject); }
 
-            DontDestroyOnLoad(gameObject);
+    // Singelton to keep instance alive through all scenes
+    void Awake()
+    {
+        if (instance == null) { instance = this; }
+        else { Destroy(gameObject); }
 
-            // Hooks up the 'OnSceneLoaded' method to the sceneLoaded event
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
+        DontDestroyOnLoad(gameObject);
 
-        // Called whenever a scene is loaded
-        void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
-        {
+        // Hooks up the 'OnSceneLoaded' method to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    // Called whenever a scene is loaded
+    void OnSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+    {
 
         Debug.Log("On Scene Loaded" + scene.name);
-            // Plays different music in different scenes
-            switch (scene.name)
-            {
-                case "vsPeanut":
-                case "vsFluffy":
+        // Plays different music in different scenes
+        switch (scene.name)
+        {
+            case "vsPeanut":
+            case "vsFluffy":
+            case "vsOllie":
+            case "vsSnowball":
+            case "vsMoses":
+                Audio.enabled = true;
                 if (Audio.clip != MusicClips[1])
                 {
                     Audio.enabled = false;
                     Audio.clip = MusicClips[1];
                     Audio.enabled = true;
                 }
-                    break;
-                default:
+                break;
+            case "Win":
+            case "Lose":
+                Audio.enabled = false;
+                break;
+            default:
+                Audio.enabled = true;
                 if (Audio.clip != MusicClips[0])
                 {
                     Audio.enabled = false;
                     Audio.clip = MusicClips[0];
                     Audio.enabled = true;
                 }
-                    break;
-            }
-
+                break;
         }
+
+    }
 }

@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-   public string nextScene;
+    public string nextScene;
     CanvasGroup canvasGroup;
     public GameObject overlay;
+    public AudioClip[] MeowClips;
+    public AudioSource Audio;
+    public int soundClip;
 
     public void doExitGame() {
      Application.Quit();
@@ -24,6 +27,12 @@ public class Buttons : MonoBehaviour
       string prevScene = counter.GetComponent<PrevScene>().PreviousScene();
       SceneManager.LoadScene(prevScene);
  }
+
+    public void playMeow()
+    {
+        Audio.clip = MeowClips[soundClip];
+        Audio.Play();
+    }
 
     public void openOverlay()
     {

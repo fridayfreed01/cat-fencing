@@ -57,6 +57,9 @@ namespace Assets.Scripts
         public Animation enemyHurtAnim;
         public Animation enemySurrenderAnim;
 
+        int randomNum;
+        int randomNum2;
+
         BasicCardType[] randomCards = new BasicCardType[5];
 
         // Start is called before the first frame update
@@ -92,6 +95,9 @@ namespace Assets.Scripts
             randomCards[2] = BasicCardType.SNEAK;
             randomCards[3] = BasicCardType.PARRY;
             randomCards[4] = BasicCardType.FEINT;
+
+            randomNum = Random.Range(0, 4);
+            randomNum2 = Random.Range(0, 1);
         }
 
         private void Update()
@@ -226,6 +232,28 @@ namespace Assets.Scripts
             {
                 StopAllCoroutines();
                 turns = 0;
+                //the following code used for level select, added by Sage
+                int indexToActivate = 0;
+                switch (enemyUnit.gameObject.name)
+                {
+                    case "Peanut":
+                        indexToActivate = 1;
+                        break;
+                    case "Ollie":
+                        indexToActivate = 2;
+                        break;
+                    case "Moses":
+                        indexToActivate = 3;
+                        break;
+                    case "Snowball":
+                        indexToActivate = 4;
+                        break;
+                    case "Fluffy":
+                        //call end of game scene here once implemented
+                        break;
+                }
+                GameObject.FindWithTag("Progress").GetComponent<Progress>().values[indexToActivate] = 1;
+                //end code done by Sage
                 SceneManager.LoadScene("Win");  
                 //win the battle, move to next level
             }
@@ -494,8 +522,7 @@ namespace Assets.Scripts
 
         //turns keeps count of how many turns have passed to change behavior
         int turns = 0;
-        int randomNum = Random.Range(0, 4);
-        int randomNum2 = Random.Range(0, 1);
+        
         public BasicCardType GetEnemyChoice()
         {
             
