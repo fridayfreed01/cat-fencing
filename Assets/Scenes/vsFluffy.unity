@@ -665,7 +665,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251887167}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -4063,12 +4063,7 @@ MonoBehaviour:
   text: {fileID: 175046424}
   battleDialogue: {fileID: 623130256}
   dialogueBox: {fileID: 1235012558}
-  playerAttackAnim: {fileID: 0}
-  playerHurtAnim: {fileID: 0}
-  playerSurrenderAnim: {fileID: 0}
-  enemyAttackAnim: {fileID: 0}
-  enemyHurtAnim: {fileID: 0}
-  enemySurrenderAnim: {fileID: 0}
+  turns: 0
 --- !u!4 &1595495066
 Transform:
   m_ObjectHideFlags: 0

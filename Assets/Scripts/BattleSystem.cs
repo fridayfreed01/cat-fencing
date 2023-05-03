@@ -49,13 +49,6 @@ namespace Assets.Scripts
         public TextMeshProUGUI battleDialogue;
         public GameObject dialogueBox;
 
-        public Animation playerAttackAnim;
-        public Animation playerHurtAnim;
-        public Animation playerSurrenderAnim;
-
-        public Animation enemyAttackAnim;
-        public Animation enemyHurtAnim;
-        public Animation enemySurrenderAnim;
 
         int randomNum;
         int randomNum2;
@@ -203,21 +196,6 @@ namespace Assets.Scripts
                 enemyCards[i].gameObject.SetActive(false);
             }
             playerCard.gameObject.SetActive(false);
-            if (playerUnit.currentHP <= 0)
-            {
-                state = BattleState.LOSE;
-                EndBattle();
-            }
-            else if (enemyUnit.currentHP <= 0)
-            {
-                state = BattleState.WIN;
-                EndBattle();
-            }
-            else
-            {
-                state = BattleState.PLAYER;
-                PlayerTurn();
-            }
             for (int i = 0; i < 5; i++)
             {
                 if (gameManager.availableCardSlots[i])
@@ -225,12 +203,30 @@ namespace Assets.Scripts
                     gameManager.DrawCard();
                 }
             }
+            if (playerUnit.currentHP <= 0)
+            {
+                state = BattleState.LOSE;
+                playerUnit.PlayDeathAnim();
+                yield return new WaitForSeconds(4f);
+                EndBattle();
+            }
+            else if (enemyUnit.currentHP <= 0)
+            {
+                state = BattleState.WIN;
+                enemyUnit.PlayDeathAnim();
+                yield return new WaitForSeconds(4f);
+                EndBattle();
+            }
+            else
+            {
+                state = BattleState.PLAYER;
+                PlayerTurn();
+            }
         }
         void EndBattle()
         {
             if(state == BattleState.WIN)
             {
-                StopAllCoroutines();
                 turns = 0;
                 //the following code used for level select, added by Sage
                 int indexToActivate = 0;
@@ -259,7 +255,6 @@ namespace Assets.Scripts
             }
             else if (state == BattleState.LOSE)
             {
-                StopAllCoroutines();
                 turns = 0;
                 SceneManager.LoadScene("Lose");
                 //lose the battle, move to menu or restart battle?
@@ -285,6 +280,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 3;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -293,6 +289,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 2;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -301,6 +298,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 1;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -309,6 +307,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 2;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -321,6 +320,7 @@ namespace Assets.Scripts
                 if (enemyCard == BasicCardType.LUNGE)
                 {
                     damage = 3;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -337,6 +337,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 1;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -345,7 +346,8 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 2;
-                    playerUnit.TakeDamage(damage);
+                    enemyUnit.PlayAttackAnim();
+                    playerUnit.TakeDamage(damage); 
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
                 }
@@ -353,6 +355,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 1;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -365,6 +368,7 @@ namespace Assets.Scripts
                 if (enemyCard == BasicCardType.LUNGE)
                 {
                     damage = 2;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -373,6 +377,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 1;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -389,6 +394,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 1;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -397,6 +403,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 4;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -409,6 +416,7 @@ namespace Assets.Scripts
                 if (enemyCard == BasicCardType.LUNGE)
                 {
                     damage = 1;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -417,6 +425,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 2;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -425,6 +434,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 1;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -441,6 +451,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     damage = 3;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -453,6 +464,7 @@ namespace Assets.Scripts
                 if (enemyCard == BasicCardType.LUNGE)
                 {
                     damage = 2;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -461,6 +473,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     damage = 1;
+                    playerUnit.PlayAttackAnim();
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -469,6 +482,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     damage = 4;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -477,6 +491,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     damage = 3;
+                    enemyUnit.PlayAttackAnim();
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -521,7 +536,7 @@ namespace Assets.Scripts
         }
 
         //turns keeps count of how many turns have passed to change behavior
-        int turns = 0;
+        public int turns = 0;
         
         public BasicCardType GetEnemyChoice()
         {
@@ -577,12 +592,12 @@ namespace Assets.Scripts
                         choice = BasicCardType.FEINT;
                         turns++;
                     }
-                    else if (turns < 5)
+                    else if (turns <= 5)
                     {
                         choice = BasicCardType.POUNCE;
                         turns++;
                     }
-                    if (turns == 6)
+                    else if (turns == 6)
                     {
                         choice = BasicCardType.POUNCE;
                         turns = 0;
@@ -590,22 +605,27 @@ namespace Assets.Scripts
                     break;
                 case "Snowball":
                     // Feint, Random, Feint, Lunge, Feint, Lunge...
-                    if (turns % 2 == 0)
+                    if (turns == 0)
                     {
                         choice = BasicCardType.FEINT;
                         turns++;
-                    }
-                    else if (turns == 1)
+                    } else if (turns == 1)
                     {
                         choice = randomCards[randomNum];
                         turns++;
-                    }
-                    else if (turns == 3)
+                    } else if (turns == 2)
+                    {
+                        choice = BasicCardType.FEINT;
+                        turns++;
+                    } else if (turns == 3)
                     {
                         choice = BasicCardType.LUNGE;
                         turns++;
-                    }
-                    if(turns == 5)
+                    } else if (turns == 4)
+                    {
+                        choice = BasicCardType.FEINT;
+                        turns++;
+                    } else if (turns == 5)
                     {
                         choice = BasicCardType.LUNGE;
                         turns = 0;
