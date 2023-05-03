@@ -3420,7 +3420,7 @@ GameObject:
   - component: {fileID: 1488644731}
   - component: {fileID: 1488644730}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Main Menu Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4137,12 +4137,7 @@ MonoBehaviour:
   text: {fileID: 175046424}
   battleDialogue: {fileID: 623130256}
   dialogueBox: {fileID: 1235012558}
-  playerAttackAnim: {fileID: 0}
-  playerHurtAnim: {fileID: 0}
-  playerSurrenderAnim: {fileID: 0}
-  enemyAttackAnim: {fileID: 0}
-  enemyHurtAnim: {fileID: 0}
-  enemySurrenderAnim: {fileID: 0}
+  turns: 0
 --- !u!4 &1595495066
 Transform:
   m_ObjectHideFlags: 0
@@ -4345,7 +4340,7 @@ GameObject:
   - component: {fileID: 1661663858}
   - component: {fileID: 1661663857}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Warning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

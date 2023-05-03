@@ -12,6 +12,10 @@ public class Buttons : MonoBehaviour
     public AudioSource Audio;
     public int soundClip;
 
+    void Start()
+    {
+        
+    }
     public void doExitGame() {
      Application.Quit();
      Debug.Log("Quitting game.");
