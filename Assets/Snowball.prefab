@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a0c8e63dfc8814fa0909014fc62942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Snowball
+  unitName: Snowball the Adventurous
   maxHP: 14
   currentHP: 14
   Death_Anim: Death
