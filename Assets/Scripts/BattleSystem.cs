@@ -49,13 +49,17 @@ namespace Assets.Scripts
         public TextMeshProUGUI battleDialogue;
         public GameObject dialogueBox;
 
-
         int randomNum;
         int randomNum2;
 
+        public AudioClip attackClip;
+        public AudioClip damageClip;
+        public AudioClip neutralClip;
+
+        public AudioSource source;
+
         BasicCardType[] randomCards = new BasicCardType[5];
 
-        // Start is called before the first frame update
         private void Start()
         {
             gameManager = FindObjectOfType<GameManager>();
@@ -91,6 +95,7 @@ namespace Assets.Scripts
 
             randomNum = Random.Range(0, 4);
             randomNum2 = Random.Range(0, 1);
+            
         }
 
         private void Update()
@@ -99,6 +104,7 @@ namespace Assets.Scripts
         }
         IEnumerator SetupBattle()
         {
+            gameManager.Shuffle();
             GameObject playerGO = Instantiate(playerPf, playerSpawn);
             playerUnit = playerGO.GetComponent<Unit>();
             playerHUD.SetHUD(playerUnit);
@@ -272,6 +278,7 @@ namespace Assets.Scripts
                 if (enemyCard == BasicCardType.LUNGE)
                 {
                     Debug.Log("The attacks clash!");
+                    source.PlayOneShot(neutralClip);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = "The attacks clash!";
                     return;
@@ -281,6 +288,7 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -290,6 +298,7 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -299,6 +308,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -308,6 +318,7 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -321,6 +332,7 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -329,6 +341,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.POUNCE)
                 {
                     Debug.Log("The attacks clash!");
+                    source.PlayOneShot(neutralClip);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = "The attacks clash!";
                     return;
@@ -338,6 +351,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -347,6 +361,7 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage); 
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -356,6 +371,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -369,6 +385,7 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -378,6 +395,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -386,6 +404,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.SNEAK)
                 {
                     Debug.Log("The attacks clash!");
+                    source.PlayOneShot(neutralClip);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = "The attacks clash!";
                     return;
@@ -395,6 +414,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -404,6 +424,7 @@ namespace Assets.Scripts
                 {
                     damage = 4;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -417,6 +438,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -426,6 +448,7 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -435,6 +458,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -443,6 +467,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.FEINT)
                 {
                     Debug.Log("The attacks clash!");
+                    source.PlayOneShot(neutralClip);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = "The attacks clash!";
                     return;
@@ -452,6 +477,7 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -465,6 +491,7 @@ namespace Assets.Scripts
                 {
                     damage = 2;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -474,6 +501,7 @@ namespace Assets.Scripts
                 {
                     damage = 1;
                     playerUnit.PlayAttackAnim();
+                    source.PlayOneShot(attackClip);
                     enemyUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = enemyUnit.unitName + " takes " + damage + " damage!";
@@ -483,6 +511,7 @@ namespace Assets.Scripts
                 {
                     damage = 4;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -492,6 +521,7 @@ namespace Assets.Scripts
                 {
                     damage = 3;
                     enemyUnit.PlayAttackAnim();
+                    source.PlayOneShot(damageClip);
                     playerUnit.TakeDamage(damage);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = playerUnit.unitName + " takes " + damage + " damage!";
@@ -500,6 +530,7 @@ namespace Assets.Scripts
                 else if (enemyCard == BasicCardType.PARRY)
                 {
                     Debug.Log("The attacks clash!");
+                    source.PlayOneShot(neutralClip);
                     dialogueBox.SetActive(true);
                     battleDialogue.text = "The attacks clash!";
                     return;
