@@ -216,6 +216,13 @@ namespace Assets.Scripts
                 yield return new WaitForSeconds(4f);
                 EndBattle();
             }
+            else if (gameManager.deck.Count == 0)
+            {
+                state = BattleState.LOSE;
+                playerUnit.PlayDeathAnim();
+                yield return new WaitForSeconds(4f);
+                EndBattle();
+            }
             else if (enemyUnit.currentHP <= 0)
             {
                 state = BattleState.WIN;
@@ -536,8 +543,8 @@ namespace Assets.Scripts
                     return;
                 }
             }
-            playerHUD.SetHP(playerUnit.currentHP, playerUnit);
-            enemyHUD.SetHP(enemyUnit.currentHP, enemyUnit);
+            playerHUD.SetHP(playerUnit);
+            enemyHUD.SetHP(enemyUnit);
         }
         public void SetChoice(BasicCardType choice)
         {

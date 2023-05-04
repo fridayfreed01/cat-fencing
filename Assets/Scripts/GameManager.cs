@@ -10,13 +10,11 @@ namespace Assets.Scripts
 	{
 
 		public List<Card> deck;
-		public TextMeshProUGUI deckSizeText;
 
 		public Transform[] cardSlots;
 		public bool[] availableCardSlots;
 
 		public List<Card> discardPile;
-		public TextMeshProUGUI discardPileSizeText;
 
 		public Transform playerActiveCard;
 		public Transform enemyActiveCard;

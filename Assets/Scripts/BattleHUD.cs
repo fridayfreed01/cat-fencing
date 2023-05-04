@@ -8,17 +8,21 @@ namespace Assets.Scripts
     public class BattleHUD : MonoBehaviour
     {
         public TextMeshProUGUI nameText;
-        public TextMeshProUGUI hp;
+
+        public Slider hp;
+
+        public Unit unit;
 
         public void SetHUD(Unit unit)
         {
             nameText.text = unit.unitName;
-            hp.text = unit.currentHP + "/" + unit.maxHP;
+            hp.maxValue = unit.maxHP;
+            hp.value = unit.currentHP;
         }
 
-        public void SetHP(int health, Unit unit)
+        public void SetHP(Unit unit)
         {
-            hp.text = health + "/" + unit.maxHP;
+            hp.value = unit.currentHP;
         }
 
     }
