@@ -622,8 +622,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4419,7 +4419,6 @@ MonoBehaviour:
   - {fileID: 27449585}
   - {fileID: 1187946880}
   - {fileID: 2005079452}
-  deckSizeText: {fileID: 0}
   cardSlots:
   - {fileID: 103057599}
   - {fileID: 1679665958}
@@ -4428,7 +4427,6 @@ MonoBehaviour:
   - {fileID: 645432445}
   availableCardSlots: 0101010101
   discardPile: []
-  discardPileSizeText: {fileID: 0}
   playerActiveCard: {fileID: 1954913604}
   enemyActiveCard: {fileID: 682268720}
 --- !u!4 &1846175895
