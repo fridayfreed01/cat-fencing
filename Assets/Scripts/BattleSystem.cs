@@ -216,13 +216,13 @@ namespace Assets.Scripts
                 yield return new WaitForSeconds(4f);
                 EndBattle();
             }
-            else if (gameManager.deck.Count == 0)
-            {
-                state = BattleState.LOSE;
-                playerUnit.PlayDeathAnim();
-                yield return new WaitForSeconds(4f);
-                EndBattle();
-            }
+            //else if (gameManager.deck.Count == 0)
+            //{
+            //    state = BattleState.LOSE;
+            //    playerUnit.PlayDeathAnim();
+            //    yield return new WaitForSeconds(4f);
+            //    EndBattle();
+            //}
             else if (enemyUnit.currentHP <= 0)
             {
                 state = BattleState.WIN;
