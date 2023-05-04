@@ -119,8 +119,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Moses the Caustic
-  maxHP: 15
-  currentHP: 15
-  attackAnim: {fileID: 0}
-  hurtAnim: {fileID: 0}
-  surrenderAnim: {fileID: 0}
+  maxHP: 12
+  currentHP: 12
+  Death_Anim: Death
+  Hurt_Anim: Hurt
+  Attack_Anim: Attack
+  animator: {fileID: 0}
+  tookDamage: 0

@@ -99,11 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Snowball
-  maxHP: 20
-  currentHP: 20
-  attackAnim: {fileID: 0}
-  hurtAnim: {fileID: 0}
-  surrenderAnim: {fileID: 0}
+  maxHP: 14
+  currentHP: 14
+  Death_Anim: Death
+  Hurt_Anim: Hurt
+  Attack_Anim: Attack
+  animator: {fileID: 0}
+  tookDamage: 0
 --- !u!95 &29065748338410830
 Animator:
   serializedVersion: 4

@@ -33,9 +33,11 @@ namespace Assets.Scripts
 			gm.availableCardSlots[handIndex] = true;
 			battleSystem.playerCard = this;
             GetChoice();
+			
 			//trigger OnPlayCard() which will then change the state to enemyturn
             battleSystem.OnPlayCard();
-		}
+            MoveToDiscardPile();
+        }
 		
 		public void EnemyPlay(BasicCardType card)
 		{
@@ -47,12 +49,10 @@ namespace Assets.Scripts
 			transform.position = gm.enemyActiveCard.position;
 			gameObject.SetActive(true);
 		}
-		//void MoveToDiscardPile()
-		//{
-		//	Instantiate(effect, transform.position, Quaternion.identity);
-		//	gm.discardPile.Add(this);
-		//	gameObject.SetActive(false);
-		//}
+		void MoveToDiscardPile()
+		{
+			gm.discardPile.Add(this);
+		}
 
 		public void GetChoice()
 		{

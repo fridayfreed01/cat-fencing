@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9138357327157879310
+--- !u!1 &876104408677938884
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9138357327157879309}
-  - component: {fileID: 9138357327157879411}
-  - component: {fileID: 9138357327157879308}
-  - component: {fileID: 9138357327157879410}
+  - component: {fileID: 876104408677938887}
+  - component: {fileID: 876104408677938873}
+  - component: {fileID: 876104408677938886}
+  - component: {fileID: 876104408677938872}
   m_Layer: 0
   m_Name: SneakCard
   m_TagString: Untagged
@@ -19,28 +19,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9138357327157879309
+--- !u!4 &876104408677938887
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138357327157879310}
+  m_GameObject: {fileID: 876104408677938884}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -1.2, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalPosition: {x: 0.5, y: -1.2, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &9138357327157879411
+--- !u!212 &876104408677938873
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138357327157879310}
+  m_GameObject: {fileID: 876104408677938884}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2208f4109ecf4254abd00db42c81cc3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d75e59d94ffc8d443882cae33492487d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,13 +86,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9138357327157879308
+--- !u!114 &876104408677938886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138357327157879310}
+  m_GameObject: {fileID: 876104408677938884}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e45c459cb8aa00428455a68f7b570ba, type: 3}
@@ -103,13 +103,14 @@ MonoBehaviour:
   isSpecial: 0
   cardName: Sneak
   damage: 0
---- !u!61 &9138357327157879410
+  isEnemyCard: 0
+--- !u!61 &876104408677938872
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138357327157879310}
+  m_GameObject: {fileID: 876104408677938884}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -120,7 +121,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 2.56}
+    oldSize: {x: 1.93, y: 2.57}
     newSize: {x: 1.92, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

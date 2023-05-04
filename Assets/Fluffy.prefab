@@ -99,11 +99,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitName: Fluffy the Lost
-  maxHP: 12
-  currentHP: 12
-  attackAnim: {fileID: 0}
-  hurtAnim: {fileID: 0}
-  surrenderAnim: {fileID: 0}
+  maxHP: 16
+  currentHP: 16
+  Death_Anim: Death
+  Hurt_Anim: Hurt
+  Attack_Anim: Attack
+  animator: {fileID: 0}
+  tookDamage: 0
 --- !u!95 &967194917610318972
 Animator:
   serializedVersion: 4
