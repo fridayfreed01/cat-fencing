@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -292, y: 304}
+  m_AnchoredPosition: {x: -1, y: 179}
   m_SizeDelta: {x: 324.4609, y: 57.453}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &696083729
@@ -181,9 +181,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The queen\u2019s still asleep? You\u2019re going to go wake her up now!
-    \r\n\rEven if you have to fight past everyone else in line to do it\u2026\r\nYou
-    need to save the kingdom!\r\n"
+  m_text: 'POINTS AND PURRS
+
+
+    a game by Table 6
+
+
+
+    font used: Hana SDF
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
   m_sharedMaterial: {fileID: 1164255778471611890, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
@@ -246,7 +253,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -189.57227, y: 0, z: -141.51031, w: 0}
+  m_margin: {x: -189.57227, y: 0, z: -188.05463, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -298,8 +305,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 514.9934, y: 321.8695}
-  m_SizeDelta: {x: 312.0254, y: 74.8895}
+  m_AnchoredPosition: {x: 554.18884, y: -321.32544}
+  m_SizeDelta: {x: 233.6346, y: 67.5404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1428201454
 MonoBehaviour:
@@ -313,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93b4137b5774d441a37ee88f6696b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: LvlSelect
+  nextScene: Credits2
   overlay: {fileID: 0}
   MeowClips: []
   Audio: {fileID: 0}
@@ -387,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.990566, g: 0.90669894, b: 0.33081162, a: 1}
+  m_Color: {r: 0.7347058, g: 0.69229263, b: 0.8396226, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -463,14 +470,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4901961, g: 0.4156863, b: 0.6745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 81b68c43a81667f46a465958cdd8d396, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -800,7 +807,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: START GAME
+  m_text: next ->
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
   m_sharedMaterial: {fileID: 1164255778471611890, guid: 06a94204c2b98b3438a0b22c3a3c092d, type: 2}
