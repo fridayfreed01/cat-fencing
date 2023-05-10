@@ -101,9 +101,11 @@ MonoBehaviour:
   unitName: Peanut the Thoughtless
   maxHP: 8
   currentHP: 8
-  attackAnim: {fileID: 0}
-  hurtAnim: {fileID: 0}
-  surrenderAnim: {fileID: 0}
+  Death_Anim: Death
+  Hurt_Anim: Hurt
+  Attack_Anim: Attack
+  animator: {fileID: 0}
+  tookDamage: 0
 --- !u!95 &2005292679217365002
 Animator:
   serializedVersion: 4

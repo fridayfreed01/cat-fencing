@@ -880,7 +880,7 @@ RectTransform:
   - {fileID: 1886215822}
   - {fileID: 1888786936}
   m_Father: {fileID: 1593757734}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1764,7 +1764,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1116.3342, y: 138.2891}
+  m_SizeDelta: {x: 1218, y: 185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &623130256
 MonoBehaviour:
@@ -2947,7 +2947,7 @@ RectTransform:
   - {fileID: 899366611}
   - {fileID: 873956989}
   m_Father: {fileID: 1593757734}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3454,12 +3454,12 @@ RectTransform:
   m_Children:
   - {fileID: 623130255}
   m_Father: {fileID: 1593757734}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0099487, y: -245.97}
-  m_SizeDelta: {x: 1223.322, y: 276.063}
+  m_AnchoredPosition: {x: 0, y: -209}
+  m_SizeDelta: {x: 1295, y: 276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1235012560
 MonoBehaviour:
@@ -4050,7 +4050,7 @@ RectTransform:
   - {fileID: 907746315}
   - {fileID: 305905066}
   m_Father: {fileID: 1593757734}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4443,10 +4443,10 @@ RectTransform:
   m_Children:
   - {fileID: 958746284}
   - {fileID: 175046423}
-  - {fileID: 251887168}
   - {fileID: 1235012559}
   - {fileID: 992427071}
   - {fileID: 1518484075}
+  - {fileID: 251887168}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4510,7 +4510,7 @@ MonoBehaviour:
   - {fileID: 667159011}
   - {fileID: 636691322}
   text: {fileID: 175046424}
-  battleDialogue: {fileID: 623130256}
+  dialogueText: {fileID: 623130256}
   dialogueBox: {fileID: 1235012558}
   attackClip: {fileID: 8300000, guid: 769612c14bb7e00499335e05cbbc944f, type: 3}
   damageClip: {fileID: 8300000, guid: ab4c6503736c04e4c878fee94cd739cf, type: 3}
